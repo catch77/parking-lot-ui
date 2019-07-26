@@ -1,5 +1,9 @@
 # ivy-parking-lot-ui
 
+## NOTICE
+
+**Please use `yarn` instead of `npm`!**
+
 ## Project setup
 ```
 yarn install
