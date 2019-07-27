@@ -22,9 +22,7 @@ pipeline {
       steps {
         nvm('v10.16.0') {
           sh 'yarn run build'
-          sh 'chmod +x scripts/kill.sh'
-          sh 'scripts/kill.sh'
-          sh 'nohup node ./node_modules/serve/bin/serve.js -c 0 -s dist -p 5000 &'
+          sh 'cp -r dist/* /approot/parking-lot-ui/dist'
         }
       }
     }
