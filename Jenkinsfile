@@ -22,7 +22,8 @@ pipeline {
       steps {
         nvm('v10.16.0') {
           sh 'yarn run build'
-          sh 'cp -r dist/* /approot/parking-lot-ui/dist'
+          sh 'chmod +x scripts/deliver.sh'
+          sh 'scripts/deliver.sh'
         }
       }
     }
