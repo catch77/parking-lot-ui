@@ -21,5 +21,17 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('./layouts/Admin.vue'),
+      children: [
+        {
+          name: 'consoleLayout',
+          path: '/admin/console',
+          component: () => import('./layouts/AdminConsole'),
+        },
+      ],
+    },
   ],
 });
