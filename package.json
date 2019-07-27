@@ -15,6 +15,7 @@
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "element-ui": "^2.11.1",
+    "moment": "^2.24.0",
     "serve": "^11.1.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
@@ -42,11 +43,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format && lint-staged && yarn lint && yarn lint:format && yarn test:unit"
+      "pre-commit": "lint-staged && yarn lint:format && yarn test:unit"
     }
   },
   "lint-staged": {
     "*.{js,vue,ts,jsx,tex,scss,md,json}": [
+      "prettier --write",
       "git add"
     ]
   }
