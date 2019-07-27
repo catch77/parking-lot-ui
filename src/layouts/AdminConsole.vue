@@ -1,13 +1,10 @@
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <template>
   <div>
     <h2>Admin Console</h2>
-    <router-view/>
+    <router-view />
   </div>
 </template>
-
