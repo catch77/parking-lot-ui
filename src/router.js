@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-
+// import login from './views/admin/login.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -44,6 +44,11 @@ export default new Router({
               component: () => import('./views/ManagePB/ManagePB.vue'),
             },
           ],
+        },
+        {
+          path: '/admin/login',
+          name: 'login',
+          component: () => import('./views/admin/login.vue'),
         },
       ],
     },
