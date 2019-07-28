@@ -23,13 +23,16 @@ export default new Router({
     },
     {
       path: '/admin',
-      name: 'admin',
-      component: () => import('./layouts/Admin.vue'),
+      name: 'AdminConsole',
+      component: () => import('./layouts/AdminConsole.vue'),
       children: [
         {
-          name: 'consoleLayout',
-          path: '/admin/console',
-          component: () => import('./layouts/AdminConsole'),
+          path: '/admin/Dashboard',
+          component: () => import('./views/Dashboard/Dashboard.vue'),
+        },
+        {
+          path: '/admin/managePB',
+          component: () => import('./views/ManagePB/ManagePB.vue'),
         },
       ],
     },
