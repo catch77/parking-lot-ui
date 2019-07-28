@@ -42,12 +42,13 @@ export default {
   methods: {
     saveAdd() {
       this.$store.dispatch('addPL', this.form);
-      // this.$message.success('添加成功');
+      this.$message.success('添加');
       this.cancleAdd();
     },
     cancleAdd() {
       this.$emit('update:addVisible', this.canclevisible);
     },
   },
+
 };
 </script>
