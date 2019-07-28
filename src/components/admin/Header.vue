@@ -45,6 +45,7 @@ export default {
 
 .header-title {
   margin: 0;
+  font-weight: 400;
 }
 
 .username {

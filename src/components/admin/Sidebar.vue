@@ -1,5 +1,5 @@
 <template>
-  <el-menu class="sidebar" background-color="#172B4D" text-color="#F4F5F7" active-text-color="#C1C7D0" router>
+  <el-menu class="admin-sidebar" background-color="#172B4D" text-color="#7A869A" active-text-color="#F4F5F7" router>
     <template v-for="item in items">
       <template>
         <el-menu-item :index="item.index" :key="item.index">
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
+.admin-sidebar {
   height: 100%;
 }
 </style>
