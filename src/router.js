@@ -31,6 +31,14 @@ export default new Router({
           path: '/admin/console',
           component: () => import('./layouts/AdminConsole'),
         },
+        {
+          path: '/admin/Dashboard',
+          component: () => import('./views/Dashboard/Dashboard.vue'),
+        },
+        {
+          path: '/admin/managePL',
+          component: () => import('./views/ManageParkingLot/ManagePL.vue'),
+        },
       ],
     },
   ],
