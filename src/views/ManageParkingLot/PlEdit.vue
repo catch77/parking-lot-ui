@@ -7,6 +7,10 @@
       <el-form-item label="容量">
         <el-input v-model="form.capacity"></el-input>
       </el-form-item>
+
+      <el-form-item label="地址">
+        <el-input v-model="form.address" readonly="true"></el-input>
+      </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="cancleEdit">取 消</el-button>
