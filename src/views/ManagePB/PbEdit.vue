@@ -1,26 +1,23 @@
 <template>
-  <el-dialog title="编辑" :visible.sync="editVisible" width="30%" :show-close="false" :close-on-press-escape="false">
+  <el-dialog
+    title="编辑"
+    :visible.sync="editVisible"
+    width="30%"
+    :show-close="false"
+    :close-on-press-escape="false"
+  >
     <el-form ref="form" :model="form" label-width="100px">
       <el-form-item label="姓名">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item label="性别">
         <el-select v-model="form.gender" placeholder="请选择">
-          <el-option label="男" value="男"></el-option>
-          <el-option label="女" value="女"></el-option>
+          <el-option label="MALE" value="MALE"></el-option>
+          <el-option label="FEMALE" value="FEMALE"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="地址">
-        <el-input v-model="form.address"></el-input>
-      </el-form-item>
-      <el-form-item label="入职时间">
-        <el-date-picker
-          type="date"
-          placeholder="选择日期"
-          v-model="form.joinTime"
-          value-format="yyyy-MM-dd"
-          style="width: 100%;"
-        ></el-date-picker>
+      <el-form-item label="入职时间" >
+        <el-input v-model="form.joinTime" :disabled="true"></el-input>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
