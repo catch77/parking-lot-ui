@@ -15,6 +15,7 @@
       <el-table :data="getplList" border class="table">
         <el-table-column prop="name" label="名称" width="240"></el-table-column>
         <el-table-column prop="capacity" label="容量"></el-table-column>
+        <el-table-column prop="address" label="地址"></el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button>
@@ -71,6 +72,7 @@ export default {
         id: '',
         name: '',
         capacity: '',
+        address: '',
       },
     };
   },

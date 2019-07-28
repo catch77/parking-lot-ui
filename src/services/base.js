@@ -3,7 +3,7 @@ import { Notification } from 'element-ui';
 import authHelper from '../utils/authHelper';
 
 const instance = axios.create({
-  baseURL: '/api',
+  baseURL: 'http://localhost:5005/api',
 });
 
 instance.interceptors.request.use(
