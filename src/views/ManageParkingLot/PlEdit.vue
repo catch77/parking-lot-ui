@@ -9,7 +9,7 @@
       </el-form-item>
 
       <el-form-item label="地址">
-        <el-input v-model="form.address" readonly="true"></el-input>
+        <el-input v-model="form.address" :disabled="true"></el-input>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
