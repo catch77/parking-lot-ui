@@ -14,6 +14,9 @@
       <el-form-item label="容量">
         <el-input v-model="form.capacity"></el-input>
       </el-form-item>
+      <el-form-item label="地址">
+        <el-input v-model="form.address"></el-input>
+      </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="cancleAdd">取 消</el-button>
@@ -28,6 +31,7 @@ export default {
       form: {
         name: '',
         capacity: '',
+        address: '',
       },
       canclevisible: false,
     };
@@ -38,12 +42,13 @@ export default {
   methods: {
     saveAdd() {
       this.$store.dispatch('addPL', this.form);
-      this.$message.success('添加成功');
+      this.$message.success('添加');
       this.cancleAdd();
     },
     cancleAdd() {
       this.$emit('update:addVisible', this.canclevisible);
     },
   },
+
 };
 </script>

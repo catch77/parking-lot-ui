@@ -12,9 +12,10 @@
         <el-button type="primary" @click="getAllPLList">查看全部</el-button>
         <el-button class="add" type="primary" @click="handleAdd">添加</el-button>
       </div>
-      <el-table :data="getplList" border class="table">
+      <el-table :data="plList" border class="table">
         <el-table-column prop="name" label="名称" width="240"></el-table-column>
         <el-table-column prop="capacity" label="容量"></el-table-column>
+        <el-table-column prop="address" label="地址"></el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button>
@@ -49,8 +50,6 @@ export default {
   name: 'basetable',
   mounted: function() {
     this.$store.dispatch('fetchAllPl');
-    // console.log(this.$store.getters.getplList);
-    // this.plList = this.$store.getters.getplList;
   },
   components: {
     PLAdd,
@@ -59,7 +58,6 @@ export default {
   },
   data() {
     return {
-      plList: [],
       currentPage: 1,
       pagesize: 5,
       select_word: '',
@@ -71,12 +69,13 @@ export default {
         id: '',
         name: '',
         capacity: '',
+        address: '',
       },
     };
   },
   computed: {
-    getplList() {
-      return this.$store.getters.getplList;
+    plList() {
+      return this.$store.getters.getPlList;
     },
   },
   methods: {
@@ -95,9 +94,7 @@ export default {
     handleEdit(row) {
       this.id = row.id;
       this.form = {
-        id: row.id,
-        name: row.name,
-        capacity: row.capacity,
+      ...row
       };
       this.editVisible = true;
     },
