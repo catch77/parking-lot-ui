@@ -12,7 +12,7 @@
         <el-button type="primary" @click="getAllPLList">查看全部</el-button>
         <el-button class="add" type="primary" @click="handleAdd">添加</el-button>
       </div>
-      <el-table :data="plList.slice((currentPage - 1) * pagesize, currentPage * pagesize)" border class="table">
+      <el-table :data="getplList" border class="table">
         <el-table-column prop="name" label="名称" width="240"></el-table-column>
         <el-table-column prop="capacity" label="容量"></el-table-column>
         <el-table-column label="操作" width="180" align="center">
@@ -48,8 +48,9 @@ import PlDel from './PlDel';
 export default {
   name: 'basetable',
   mounted: function() {
-    this.$store.dispatch('getBackplList');
-    this.plList = this.$store.getters.getplList;
+    this.$store.dispatch('fetchAllPl');
+    // console.log(this.$store.getters.getplList);
+    // this.plList = this.$store.getters.getplList;
   },
   components: {
     PLAdd,
