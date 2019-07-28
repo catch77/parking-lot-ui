@@ -50,7 +50,7 @@ import PbDel from './PbDel';
 export default {
   name: 'basetable',
   mounted: function() {
-    this.$store.dispatch('getBackPbList');
+    this.$store.dispatch('fetchAllPb');
     this.pbList = this.$store.getters.getPbList;
   },
   components: {
