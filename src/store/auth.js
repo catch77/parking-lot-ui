@@ -3,6 +3,7 @@
  */
 
 import authHelper from '../utils/authHelper';
+import * as authService from '../services/authService';
 
 const auth = {
   state: {
@@ -23,16 +24,29 @@ const auth = {
       state.principal = principal;
     },
   },
-  actions: {},
+  actions: {
+    login({ commit }, { username, password }) {
+      let token;
+      return authService
+        .login({ username, password })
+        .then(_token => {
+          token = _token;
+          return token;
+        })
+        .then(() => authService.fetchPrincipal())
+        .then(principal => {
+          commit('SET_TOKEN', token);
+          commit('SET_PRINCIPAL', principal);
+          return principal;
+        });
+    },
+  },
   getters: {
     loginState(state) {
-      return state.token && state.token.access_token;
+      return !!state.token;
     },
-    token(state, getters) {
-      if (getters.loginState) {
-        return state.token.access_token;
-      }
-      return null;
+    token(state) {
+      return state.token || null;
     },
   },
 };
