@@ -20,12 +20,12 @@ export default {
       items: [
         {
           icon: 'el-icon-lx-home',
-          index: '/admin/dashboard',
+          index: '/admin/console/dashboard',
           title: '系统首页',
         },
         {
           icon: 'el-icon-lx-cascades',
-          index: '/admin/managePB',
+          index: '/admin/console/managePB',
           title: '管理ParkingBoy',
         },
       ],
