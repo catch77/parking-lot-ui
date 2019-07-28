@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <v-head></v-head>
-    <v-sidebar></v-sidebar>
+    <admin-header></admin-header>
+    <admin-sidebar></admin-sidebar>
     <div class="content-box">
       <div class="content">
         <router-view></router-view>
@@ -11,15 +11,19 @@
   </div>
 </template>
 <script>
-import vHead from '../components/admin/Header.vue';
-import vSidebar from '../components/admin/Sidebar.vue';
+import AdminHeader from '../components/admin/Header.vue';
+import AdminSidebar from '../components/admin/Sidebar.vue';
+
 export default {
   data() {
     return {};
   },
   components: {
-    vHead,
-    vSidebar,
+    AdminHeader,
+    AdminSidebar,
+  },
+  mounted() {
+    this.$store.dispatch('admin/getUser');
   },
 };
 </script>

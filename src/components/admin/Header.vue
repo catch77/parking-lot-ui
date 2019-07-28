@@ -5,11 +5,12 @@
       <div class="header-user-con">
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
-            Hi :{{ username }}
+            {{ this.$store.getters['admin/name'] }}
             <i class="el-icon-caret-bottom"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
+            <el-dropdown-item disabled>@{{ this.$store.getters.username }}</el-dropdown-item>
+            <el-dropdown-item divided command="LOG_OUT">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -26,8 +27,8 @@ export default {
 
   methods: {
     handleCommand(command) {
-      if (command == 'loginout') {
-        //....
+      if (command === 'LOG_OUT') {
+        this.$store.dispatch('logout');
       }
     },
   },
@@ -42,27 +43,33 @@ export default {
   font-size: 22px;
   color: #fff;
 }
+
 .header .logo {
   float: left;
   width: 250px;
   line-height: 70px;
 }
+
 .header-right {
   float: right;
   padding-right: 50px;
 }
+
 .header-user-con {
   display: flex;
   height: 70px;
   align-items: center;
 }
+
 .user-name {
   margin-left: 10px;
 }
+
 .el-dropdown-link {
   color: #fff;
   cursor: pointer;
 }
+
 .el-dropdown-menu__item {
   text-align: center;
 }

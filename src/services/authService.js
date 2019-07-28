@@ -9,5 +9,5 @@ export const login = user => {
 };
 
 export const fetchPrincipal = () => {
-  return request.get('/users/me');
+  return request.get('/users/principal');
 };

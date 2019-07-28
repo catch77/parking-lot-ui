@@ -17,9 +17,7 @@ function getAuthState() {
   if ((rawToken = localStorage.getItem(AUTH_TOKEN_KEY))) {
     token = JSON.parse(rawToken);
   }
-  return {
-    token,
-  };
+  return token;
 }
 
 export default { setToken, clearToken, getAuthState };

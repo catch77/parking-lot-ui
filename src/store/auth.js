@@ -25,25 +25,46 @@ const auth = {
     },
   },
   actions: {
-    login({ commit }, { username, password }) {
+    login({ commit, dispatch }, { username, password }) {
       return authService
         .login({ username, password })
         .then(_token => {
+          authHelper.setToken(_token);
           commit('SET_TOKEN', _token);
+          return authHelper.getAuthState();
         })
-        .then(() => authService.fetchPrincipal())
+        .then(() => {
+          dispatch('fetchPrincipal');
+        });
+    },
+    fetchPrincipal({ commit }) {
+      return authService
+        .fetchPrincipal()
         .then(principal => {
           commit('SET_PRINCIPAL', principal);
           return principal;
+        })
+        .catch(err => {
+          commit('CLEAR_TOKEN');
+          throw err;
         });
+    },
+    logout({ commit, dispatch }) {
+      commit('CLEAR_TOKEN');
+      dispatch('admin/clearUser');
     },
   },
   getters: {
-    loginState(state) {
+    isLogin(state) {
       return !!state.token;
     },
     token(state) {
       return state.token || null;
+    },
+    username(state, getters) {
+      if (getters.isLogin && state.principal) {
+        return state.principal.username;
+      }
     },
   },
 };

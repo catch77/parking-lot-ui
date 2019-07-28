@@ -94,7 +94,7 @@ export default {
     handleEdit(row) {
       this.id = row.id;
       this.form = {
-      ...row
+        ...row,
       };
       this.editVisible = true;
     },
