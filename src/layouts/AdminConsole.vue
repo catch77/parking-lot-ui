@@ -1,14 +1,14 @@
 <template>
-  <el-container class="wrapper">
+  <el-container class="wrapper" v-loading="!authorityCheck">
     <el-header class="header-bar">
-      <admin-header></admin-header>
+      <admin-header v-if="authorityCheck"></admin-header>
     </el-header>
     <el-container>
-      <el-aside width="250px" class="admin-side">
-        <admin-sidebar></admin-sidebar>
+      <el-aside class="admin-side">
+        <admin-sidebar v-if="authorityCheck"></admin-sidebar>
       </el-aside>
       <el-main class="admin-main">
-        <div class="admin-main-content">
+        <div class="admin-main-content" v-if="authorityCheck">
           <router-view></router-view>
         </div>
         <el-footer>© {{ new Date().getFullYear() }} Ivy</el-footer>
@@ -22,14 +22,27 @@ import AdminSidebar from '../components/admin/Sidebar.vue';
 
 export default {
   data() {
-    return {};
+    return {
+      authorityCheck: false,
+    };
   },
   components: {
     AdminHeader,
     AdminSidebar,
   },
   mounted() {
-    this.$store.dispatch('admin/getUser');
+    if (!this.$store.getters.isLogin) {
+      this.$router.push('/admin/login');
+      return;
+    }
+    this.$store
+      .dispatch('admin/getUser')
+      .then(() => {
+        this.authorityCheck = true;
+      })
+      .catch(() => {
+        this.$router.push('/admin/login');
+      });
   },
 };
 </script>
@@ -52,6 +65,11 @@ export default {
 .admin-main {
   height: calc(100vh - 60px);
   overflow: auto;
+}
+
+.admin-side {
+  width: 250px;
+  background: #172b4d;
 }
 
 .admin-main {
