@@ -13,5 +13,5 @@ export const updatePl = Pl => {
 };
 
 export const deletePl = PlId => {
-  return instance.delete('/parkingLots/${PlId}');
+  return instance.delete(`/parkingLots/${PlId}`);
 };
