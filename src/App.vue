@@ -16,6 +16,5 @@ export default {
 </template>
 
 <style lang="scss">
-@import './assets/css/main.css';
-@import './assets/css/color-dark.css';
+@import './assets/css/main';
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <div class="header">
-    <div class="logo">停车场管理系统</div>
+  <div class="admin-header">
+    <h2 class="header-title">停车场管理系统</h2>
     <div class="header-right">
-      <div class="header-user-con">
-        <el-dropdown class="user-name" trigger="click" @command="handleCommand">
-          <span class="el-dropdown-link">
+      <div class="header-user-info">
+        <el-dropdown trigger="click" @command="handleCommand">
+          <span class="el-dropdown-link username">
             {{ this.$store.getters['admin/name'] }}
             <i class="el-icon-caret-bottom"></i>
           </span>
@@ -35,42 +35,19 @@ export default {
 };
 </script>
 <style scoped>
-.header {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  height: 70px;
-  font-size: 22px;
-  color: #fff;
-}
-
-.header .logo {
-  float: left;
-  width: 250px;
-  line-height: 70px;
-}
-
-.header-right {
-  float: right;
-  padding-right: 50px;
-}
-
-.header-user-con {
+.admin-header {
   display: flex;
-  height: 70px;
-  align-items: center;
-}
-
-.user-name {
-  margin-left: 10px;
-}
-
-.el-dropdown-link {
   color: #fff;
-  cursor: pointer;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.el-dropdown-menu__item {
-  text-align: center;
+.header-title {
+  margin: 0;
+}
+
+.username {
+  color: #fff;
 }
 </style>
