@@ -26,16 +26,13 @@ const auth = {
   },
   actions: {
     login({ commit }, { username, password }) {
-      let token;
       return authService
         .login({ username, password })
         .then(_token => {
-          token = _token;
-          return token;
+          commit('SET_TOKEN', _token);
         })
         .then(() => authService.fetchPrincipal())
         .then(principal => {
-          commit('SET_TOKEN', token);
           commit('SET_PRINCIPAL', principal);
           return principal;
         });
