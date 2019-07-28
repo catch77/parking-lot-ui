@@ -49,6 +49,5 @@ export default {
       this.$emit('update:addVisible', this.canclevisible);
     },
   },
-
 };
 </script>

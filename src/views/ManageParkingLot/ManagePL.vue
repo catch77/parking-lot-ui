@@ -1,15 +1,10 @@
 <template>
-  <div class="table">
-    <div class="crumbs">
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item> <i class="el-icon-lx-cascades"></i> ParkingLot List </el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-    <div class="container">
+  <div>
+    <div class="admin-container">
       <div class="handle-box">
-        <el-input v-model="select_word" placeholder="搜索" class="handle-input mr10"></el-input>
-        <el-button type="primary" icon="el-icon-search" @click="selectPL">搜索</el-button>
-        <el-button type="primary" @click="getAllPLList">查看全部</el-button>
+        <el-input v-show="false" v-model="select_word" placeholder="搜索" class="handle-input mr10"></el-input>
+        <el-button v-show="false" type="primary" icon="el-icon-search" @click="selectPL">搜索</el-button>
+        <el-button v-show="false" type="primary" @click="getAllPLList">查看全部</el-button>
         <el-button class="add" type="primary" @click="handleAdd">添加</el-button>
       </div>
       <el-table :data="plList" border class="table">
@@ -24,7 +19,7 @@
         </el-table-column>
       </el-table>
 
-      <div class="pagination">
+      <div class="admin-pagination">
         <el-pagination
           background
           :page-size="pagesize"
@@ -46,6 +41,7 @@
 import PLAdd from './PlAdd';
 import PlEdit from './PlEdit';
 import PlDel from './PlDel';
+
 export default {
   name: 'basetable',
   mounted: function() {
@@ -94,7 +90,7 @@ export default {
     handleEdit(row) {
       this.id = row.id;
       this.form = {
-      ...row
+        ...row,
       };
       this.editVisible = true;
     },
@@ -114,6 +110,7 @@ export default {
 .add {
   float: right;
 }
+
 .handle-box {
   margin-bottom: 20px;
 }
@@ -126,17 +123,21 @@ export default {
   width: 300px;
   display: inline-block;
 }
+
 .del-dialog-cnt {
   font-size: 16px;
   text-align: center;
 }
+
 .table {
   width: 100%;
   font-size: 14px;
 }
+
 .red {
   color: #ff0000;
 }
+
 .mr10 {
   margin-right: 10px;
 }

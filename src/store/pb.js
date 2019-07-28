@@ -46,12 +46,12 @@ const pbStore = {
       });
     },
     updatePB({ commit }, payload) {
-      PbAPI.updatePb(payload).then((res) => {
+      PbAPI.updatePb(payload).then(res => {
         commit('UPDATE_PB', res);
       });
     },
     addPB({ commit }, payload) {
-      PbAPI.addPb(payload).then((res) => {
+      PbAPI.addPb(payload).then(res => {
         commit('ADD_PB', res);
       });
     },
