@@ -69,7 +69,7 @@ export default {
       form: {
         id: '',
         name: '',
-        capacity,
+        capacity: '',
       },
     };
   },
