@@ -52,7 +52,7 @@ export default new Router({
         {
           path: '/admin/login',
           name: 'login',
-          component: () => import('./views/admin/login.vue'),
+          component: () => import('./views/admin/Login.vue'),
         },
       ],
     },
