@@ -28,6 +28,11 @@ export default {
           index: '/admin/console/managePB',
           title: '管理ParkingBoy',
         },
+        {
+          icon: 'el-icon-lx-cascades',
+          index: '/admin/console/managePL',
+          title: '管理ParkingLot',
+        },
       ],
     };
   },
