@@ -27,17 +27,27 @@ export default new Router({
       component: () => import('./layouts/Admin.vue'),
       children: [
         {
-          name: 'consoleLayout',
           path: '/admin/console',
-          component: () => import('./layouts/AdminConsole'),
-        },
-        {
-          path: '/admin/Dashboard',
-          component: () => import('./views/Dashboard/Dashboard.vue'),
-        },
-        {
-          path: '/admin/managePL',
-          component: () => import('./views/ManageParkingLot/ManagePL.vue'),
+          name: 'AdminConsole',
+          component: () => import('./layouts/AdminConsole.vue'),
+          children: [
+            {
+              path: '/admin/console',
+              component: () => import('./views/Dashboard/Dashboard.vue'),
+            },
+            {
+              path: '/admin/console/Dashboard',
+              component: () => import('./views/Dashboard/Dashboard.vue'),
+            },
+            {
+              path: '/admin/console/managePB',
+              component: () => import('./views/ManagePB/ManagePB.vue'),
+            },
+            {
+              path: '/admin/console/managePL',
+              component: () => import('./views/ManageParkingLot/ManagePL.vue'),
+            },
+          ],
         },
       ],
     },

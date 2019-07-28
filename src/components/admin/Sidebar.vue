@@ -1,16 +1,10 @@
 <template>
   <div class="sidebar">
-    <el-menu
-      class="s
-    idebar-el-menu"
-      background-color="#324157"
-      text-color="#bfcbd9"
-      router
-    >
+    <el-menu class="sidebar-el-menu" background-color="#324157" text-color="#bfcbd9" router>
       <template v-for="item in items">
         <template>
           <el-menu-item :index="item.index" :key="item.index">
-            <i :class="item.icon"> </i>
+            <i :class="item.icon"></i>
             <span slot="title">{{ item.title }}</span>
           </el-menu-item>
         </template>
@@ -26,13 +20,13 @@ export default {
       items: [
         {
           icon: 'el-icon-lx-home',
-          index: '/admin/dashboard',
+          index: '/admin/console/dashboard',
           title: '系统首页',
         },
         {
           icon: 'el-icon-lx-cascades',
-          index: '/admin/managePL',
-          title: '管理ParkingLot',
+          index: '/admin/console/managePB',
+          title: '管理ParkingBoy',
         },
       ],
     };
