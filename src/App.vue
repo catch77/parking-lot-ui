@@ -1,3 +1,14 @@
+<script>
+export default {
+  name: 'AppRoot',
+  mounted() {
+    if (this.$store.getters.isLogin) {
+      this.$store.dispatch('fetchPrincipal');
+    }
+  },
+};
+</script>
+
 <template>
   <div id="app">
     <router-view />
@@ -5,6 +16,5 @@
 </template>
 
 <style lang="scss">
-@import './assets/css/main.css';
-@import './assets/css/color-dark.css';
+@import './assets/css/main';
 </style>

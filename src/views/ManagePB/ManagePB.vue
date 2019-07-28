@@ -1,22 +1,20 @@
 <template>
-  <div class="table">
-    <div class="crumbs">
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item> <i class="el-icon-lx-cascades"></i> ParkingBoy List </el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-    <div class="container">
+  <div>
+    <div class="admin-container">
       <div class="handle-box">
-        <el-input v-model="select_word" placeholder="搜索" class="handle-input mr10"></el-input>
-        <el-button type="primary" icon="el-icon-search" @click="selectPB">搜索</el-button>
-        <el-button type="primary" @click="getAllPBList">查看全部</el-button>
+        <el-input v-show="false" v-model="select_word" placeholder="搜索" class="handle-input mr10"></el-input>
+        <el-button v-show="false" type="primary" icon="el-icon-search" @click="selectPB">搜索</el-button>
+        <el-button v-show="false" type="primary" @click="getAllPBList">查看全部</el-button>
         <el-button class="add" type="primary" @click="handleAdd">添加</el-button>
       </div>
-      <el-table :data="pbList.slice((currentPage - 1) * pagesize, currentPage * pagesize)" border class="table">
+      <el-table :data="getPbList.slice((currentPage - 1) * pagesize, currentPage * pagesize)" border class="table">
         <el-table-column prop="name" label="姓名" width="240"></el-table-column>
         <el-table-column prop="gender" label="性别" width="240"></el-table-column>
-        <el-table-column prop="address" label="地址"></el-table-column>
-        <el-table-column prop="joinTime" label="入职时间" width="240"></el-table-column>
+        <el-table-column prop="joinTime" label="入职时间">
+          <template slot-scope="scope">
+            {{ moment(scope.row.joinTime).format('YYYY-MM-DD HH:mm:ss') }}
+          </template>
+        </el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button>
@@ -25,14 +23,14 @@
         </el-table-column>
       </el-table>
 
-      <div class="pagination">
+      <div class="admin-pagination">
         <el-pagination
           background
           :page-size="pagesize"
           :current-page="currentPage"
           @current-change="handleCurrentChange"
           layout="prev, pager, next"
-          :total="pbList.length"
+          :total="getPbList.length"
         ></el-pagination>
       </div>
     </div>
@@ -47,11 +45,12 @@
 import PBAdd from './PbAdd';
 import PbEdit from './PbEdit';
 import PbDel from './PbDel';
+import moment from 'moment';
+
 export default {
   name: 'basetable',
   mounted: function() {
     this.$store.dispatch('fetchAllPb');
-    this.pbList = this.$store.getters.getPbList;
   },
   components: {
     PBAdd,
@@ -60,6 +59,7 @@ export default {
   },
   data() {
     return {
+      moment,
       pbList: [],
       currentPage: 1,
       pagesize: 5,
@@ -72,7 +72,6 @@ export default {
         id: '',
         name: '',
         gender: '',
-        address: '',
         joinTime: '',
       },
     };
@@ -101,7 +100,6 @@ export default {
         id: row.id,
         name: row.name,
         gender: row.gender,
-        address: row.address,
         joinTime: row.joinTime,
       };
       this.editVisible = true;
@@ -122,6 +120,7 @@ export default {
 .add {
   float: right;
 }
+
 .handle-box {
   margin-bottom: 20px;
 }
@@ -134,17 +133,21 @@ export default {
   width: 300px;
   display: inline-block;
 }
+
 .del-dialog-cnt {
   font-size: 16px;
   text-align: center;
 }
+
 .table {
   width: 100%;
   font-size: 14px;
 }
+
 .red {
   color: #ff0000;
 }
+
 .mr10 {
   margin-right: 10px;
 }

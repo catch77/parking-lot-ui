@@ -16,7 +16,7 @@ const plStore = {
       });
     },
     UPDATE_PL(state, payload) {
-      state.pLList.forEach(function(item, index) {
+      state.plList.forEach(function(item, index) {
         if (item.id === payload.id) {
           state.plList.splice(index, 1, payload);
         }

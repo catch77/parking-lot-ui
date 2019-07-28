@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import auth from './store/auth';
 import plStore from './store/plStore';
 import pbStore from './store/pb';
+import admin from './store/admin';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -10,6 +12,7 @@ export default new Vuex.Store({
     auth,
     plStore,
     pbStore,
+    admin,
   },
   state: {
     userName: '',

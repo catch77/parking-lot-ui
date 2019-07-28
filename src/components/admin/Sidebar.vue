@@ -1,16 +1,14 @@
 <template>
-  <div class="sidebar">
-    <el-menu class="sidebar-el-menu" background-color="#324157" text-color="#bfcbd9" router>
-      <template v-for="item in items">
-        <template>
-          <el-menu-item :index="item.index" :key="item.index">
-            <i :class="item.icon"></i>
-            <span slot="title">{{ item.title }}</span>
-          </el-menu-item>
-        </template>
+  <el-menu class="admin-sidebar" background-color="#172B4D" text-color="#7A869A" active-text-color="#F4F5F7" router>
+    <template v-for="item in items">
+      <template>
+        <el-menu-item :index="item.index" :key="item.index">
+          <i :class="item.icon"></i>
+          <span slot="title">{{ item.title }}</span>
+        </el-menu-item>
       </template>
-    </el-menu>
-  </div>
+    </template>
+  </el-menu>
 </template>
 
 <script>
@@ -39,22 +37,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.sidebar {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 70px;
-  bottom: 0;
-  overflow-y: scroll;
-}
-.sidebar::-webkit-scrollbar {
-  width: 0;
-}
-.sidebar-el-menu:not(.el-menu--collapse) {
-  width: 250px;
-}
-.sidebar > ul {
+<style lang="scss" scoped>
+.admin-sidebar {
   height: 100%;
 }
 </style>
