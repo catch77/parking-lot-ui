@@ -23,16 +23,27 @@ export default new Router({
     },
     {
       path: '/admin',
-      name: 'AdminConsole',
-      component: () => import('./layouts/AdminConsole.vue'),
+      name: 'admin',
+      component: () => import('./layouts/Admin.vue'),
       children: [
         {
-          path: '/admin/Dashboard',
-          component: () => import('./views/Dashboard/Dashboard.vue'),
-        },
-        {
-          path: '/admin/managePB',
-          component: () => import('./views/ManagePB/ManagePB.vue'),
+          path: '/admin/console',
+          name: 'AdminConsole',
+          component: () => import('./layouts/AdminConsole.vue'),
+          children: [
+            {
+              path: '/admin/console',
+              component: () => import('./views/Dashboard/Dashboard.vue'),
+            },
+            {
+              path: '/admin/console/Dashboard',
+              component: () => import('./views/Dashboard/Dashboard.vue'),
+            },
+            {
+              path: '/admin/console/managePB',
+              component: () => import('./views/ManagePB/ManagePB.vue'),
+            },
+          ],
         },
       ],
     },
