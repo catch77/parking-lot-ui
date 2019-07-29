@@ -1,5 +1,11 @@
 <template>
-  <el-dialog title="编辑" :visible.sync="editVisible" width="30%" :show-close="false" :close-on-press-escape="false">
+  <el-dialog
+    title="编辑"
+    :visible.sync="editVisible"
+    width="30%"
+    :show-close="false"
+    :close-on-press-escape="false"
+  >
     <el-form ref="form" :model="form" label-width="100px">
       <el-form-item label="姓名">
         <el-input v-model="form.name"></el-input>
@@ -33,9 +39,15 @@ export default {
   },
   methods: {
     saveEdit() {
-      this.$store.dispatch('updatePB', this.form);
-      this.$message.success('修改成功');
-      this.cancleEdit();
+      this.$store
+        .dispatch('updatePB', this.form)
+        .then(() => {
+          this.$message.success('修改成功');
+          this.cancleEdit();
+        })
+        .catch(err => {
+          this.$message.success('修改失败');
+        });
     },
     cancleEdit() {
       this.$emit('update:editVisible', this.cancleVisible);
