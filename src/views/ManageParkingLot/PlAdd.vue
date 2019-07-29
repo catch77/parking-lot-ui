@@ -43,6 +43,11 @@ export default {
     saveAdd() {
       this.$store.dispatch('addPL', this.form);
       this.$message.success('添加');
+      this.form = {
+        name: '',
+        capacity: '',
+        address: '',
+      };
       this.cancleAdd();
     },
     cancleAdd() {
