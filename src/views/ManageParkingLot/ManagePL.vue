@@ -2,8 +2,8 @@
   <div>
     <div class="admin-container">
       <div class="handle-box">
-        <el-input v-show="false" v-model="select_word" placeholder="搜索" class="handle-input mr10"></el-input>
-        <el-button v-show="false" type="primary" icon="el-icon-search" @click="selectPL">搜索</el-button>
+        <!-- <el-input v-show="false" v-model="select_word" placeholder="搜索" class="handle-input mr10"></el-input>
+        <el-button v-show="false" type="primary" icon="el-icon-search" @click="selectPL">搜索</el-button> -->
         <el-button v-show="false" type="primary" @click="getAllPLList">查看全部</el-button>
         <el-button class="add" type="primary" @click="handleAdd">添加</el-button>
       </div>
@@ -23,11 +23,11 @@
         <el-pagination
           v-show="false"
           background
-          :page-size="pagesize"
-          :current-page="currentPage"
+          :page-size="getgetPageSize"
+          :current-page="getCurrentPage"
           @current-change="handleCurrentChange"
           layout="prev, pager, next"
-          :total="plList.length"
+          :total="getTotalCount"
         ></el-pagination>
       </div>
     </div>
@@ -46,7 +46,8 @@ import PlDel from './PlDel';
 export default {
   name: 'basetable',
   mounted: function() {
-    this.$store.dispatch('fetchAllPl');
+    // this.$store.dispatch('fetchAllPl');
+    this.$store.dispatch('fetchAllPlBypage', 1);
   },
   components: {
     PLAdd,
@@ -56,7 +57,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pagesize: 5,
+      getPageNumber: 1,
       select_word: '',
       editVisible: false,
       delVisible: false,
@@ -71,20 +72,30 @@ export default {
     };
   },
   computed: {
+    getTotalCount(){
+      return this.$store.getters.getTotalCount
+    },
     plList() {
       return this.$store.getters.getPlList;
     },
+    getgetPageSize() {
+      return this.$store.getters.getgetPageSize;
+    },
+    getCurrentPage(){
+       return this.$store.getters.getCurrentPage
+    }
   },
   methods: {
     handleCurrentChange(val) {
       this.currentPage = val;
+      this.$store.dispatch('fetchAllPlBypage', val);
     },
     getAllPLList() {
       this.plList = this.getplList;
     },
-    selectPL() {
-      this.plList = this.$store.getters.getplListByName(this.select_word);
-    },
+    // selectPL() {
+    //   this.plList = this.$store.getters.getplListByName(this.select_word);
+    // },
     handleAdd() {
       this.addVisible = true;
     },
