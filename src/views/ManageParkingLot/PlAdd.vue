@@ -12,7 +12,7 @@
       </el-form-item>
 
       <el-form-item label="容量">
-        <el-input v-model="form.capacity"></el-input>
+        <el-input-number v-model="form.capacity"></el-input-number>
       </el-form-item>
       <el-form-item label="地址">
         <el-input v-model="form.address"></el-input>
@@ -41,9 +41,20 @@ export default {
   },
   methods: {
     saveAdd() {
-      this.$store.dispatch('addPL', this.form);
-      this.$message.success('添加');
-      this.cancleAdd();
+      this.$store
+        .dispatch('addPL', this.form)
+        .then(() => {
+          this.$message.success('添加成功');
+          this.form = {
+            name: '',
+            capacity: '',
+            address: '',
+          };
+          this.cancleAdd();
+        })
+        .catch(() => {
+          this.$message.error('添加失败');
+        });
     },
     cancleAdd() {
       this.$emit('update:addVisible', this.canclevisible);

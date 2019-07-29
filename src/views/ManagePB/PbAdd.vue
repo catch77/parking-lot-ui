@@ -1,5 +1,11 @@
 <template>
-  <el-dialog title="添加" :visible.sync="addVisible" width="30%" :show-close="false" :close-on-press-escape="false">
+  <el-dialog
+    title="添加"
+    :visible.sync="addVisible"
+    width="30%"
+    :show-close="false"
+    :close-on-press-escape="false"
+  >
     <el-form ref="form" :model="form" label-width="100px">
       <el-form-item label="姓名">
         <el-input v-model="form.name"></el-input>
@@ -33,9 +39,14 @@ export default {
   },
   methods: {
     saveAdd() {
-      this.$store.dispatch('addPB', this.form);
-      this.$message.success('添加成功');
-      this.cancleAdd();
+      this.$store.dispatch('addPB', this.form)
+      .then(() => {
+        this.$message.success('添加成功');
+        this.cancleAdd();
+      })
+      .catch(() => {
+        this.$message.error("添加失败")
+      });
     },
     cancleAdd() {
       this.$emit('update:addVisible', this.canclevisible);

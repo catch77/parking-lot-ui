@@ -27,9 +27,14 @@ export default {
   },
   methods: {
     deletePl() {
-      this.$store.dispatch('deletePl', this.id);
-      this.$message.success('删除成功');
-      this.cancleDel(1);
+      this.$store.dispatch('deletePl', this.id)
+      .then(() => {
+          this.$message.success('删除成功');
+          this.cancleDel(1);
+        })
+        .catch(() => {
+          this.$message.error('删除失败');
+        });
     },
     cancleDel(val) {
       this.$emit('cancleDel', val);

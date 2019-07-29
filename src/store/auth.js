@@ -50,8 +50,11 @@ const auth = {
         });
     },
     logout({ commit, dispatch }) {
-      commit('CLEAR_TOKEN');
-      dispatch('admin/clearUser');
+      return new Promise((resolve) => {
+        commit('CLEAR_TOKEN');
+        dispatch('admin/clearUser');
+        resolve();
+      });
     },
   },
   getters: {
