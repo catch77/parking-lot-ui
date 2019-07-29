@@ -45,7 +45,7 @@ export default {
           this.$message.success('修改成功');
           this.cancleEdit();
         })
-        .catch(err => {
+        .catch(() => {
           this.$message.success('修改失败');
         });
     },
