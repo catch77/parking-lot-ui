@@ -39,11 +39,12 @@ export default {
   },
   methods: {
     saveAdd() {
-      this.$store.dispatch('addPB', this.form).then(() => {
+      this.$store.dispatch('addPB', this.form)
+      .then(() => {
         this.$message.success('添加成功');
         this.cancleAdd();
       })
-      .catch(err => {
+      .catch(() => {
         this.$message.error("添加失败")
       });
     },

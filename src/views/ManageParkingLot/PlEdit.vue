@@ -5,7 +5,7 @@
         <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item label="容量">
-        <el-input v-model="form.capacity"></el-input>
+        <el-input-number v-model="form.capacity"></el-input-number>
       </el-form-item>
 
       <el-form-item label="地址">
@@ -31,9 +31,14 @@ export default {
   },
   methods: {
     saveEdit() {
-      this.$store.dispatch('updatePL', this.form);
-      this.$message.success('修改成功');
-      this.cancleEdit();
+      this.$store.dispatch('updatePL', this.form)
+        .then(() => {
+          this.$message.success('修改成功');
+          this.cancleEdit();
+        })
+        .catch(() => {
+          this.$message.success('修改失败');
+        });
     },
     cancleEdit() {
       this.$emit('update:editVisible', this.cancleVisible);

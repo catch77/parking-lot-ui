@@ -36,22 +36,22 @@ const plStore = {
   },
   actions: {
     fetchAllPl({ commit }) {
-      PlAPI.fetchAllPl().then(res => {
+      return PlAPI.fetchAllPl().then(res => {
         commit('SET_PL_LIST', res);
       });
     },
     deletePl({ commit }, payload) {
-      PlAPI.deletePl(payload).then(() => {
+      return PlAPI.deletePl(payload).then(() => {
         commit('DELETE_PL', payload);
       });
     },
     updatePL({ commit }, payload) {
-      PlAPI.updatePl(payload).then((res) => {
+      return PlAPI.updatePl(payload).then((res) => {
         commit('UPDATE_PL', res);
       });
     },
     addPL({ commit }, payload) {
-      PlAPI.addPl(payload).then((res) => {
+      return PlAPI.addPl(payload).then((res) => {
         commit('ADD_PL', res);
       });
     },

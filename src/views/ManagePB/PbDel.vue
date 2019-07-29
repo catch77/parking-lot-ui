@@ -33,7 +33,7 @@ export default {
           this.$message.success('删除成功');
           this.cancleDel(1);
         })
-        .catch(err => {
+        .catch(() => {
           this.$message.error('删除失败');
         });
     },
