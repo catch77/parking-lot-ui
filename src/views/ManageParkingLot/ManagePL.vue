@@ -21,7 +21,6 @@
 
       <div class="admin-pagination">
         <el-pagination
-          v-show="false"
           background
           :page-size="getgetPageSize"
           :current-page="getCurrentPage"
