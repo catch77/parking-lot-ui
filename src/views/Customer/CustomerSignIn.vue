@@ -19,6 +19,10 @@
       <el-form-item>
         <el-button type="primary" @click="login" class="login-btn" :loading="loading">登录</el-button>
       </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" @click="signup" class="login-btn" :loading="loading">注册</el-button>
+      </el-form-item>
     </el-form>
     <router-view />
   </el-row>
@@ -51,7 +55,7 @@ export default {
               this.loading = false;
               this.isLoginError = false;
               //跳转路由
-              this.$router.push('');
+              this.$router.push('/customer/dashboard');
             })
             .catch(() => {
               this.loading = false;
@@ -59,6 +63,9 @@ export default {
             });
         }
       });
+    },
+  signup() {
+      this.$router.push('/customer/signup')
     },
   },
 };

@@ -13,5 +13,10 @@ export default {
       name: 'customerSignUp',
       component: () => import('../views/Customer/CustomerSignUp.vue'),
     },
+    {
+      path: '/customer/dashboard',
+      name: 'customerDashboard',
+      component: () => import('../views/Customer/CustomerDashboard.vue'),
+    },
   ],
 };
