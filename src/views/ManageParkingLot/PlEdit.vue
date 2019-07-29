@@ -31,9 +31,14 @@ export default {
   },
   methods: {
     saveEdit() {
-      this.$store.dispatch('updatePL', this.form);
-      this.$message.success('修改成功');
-      this.cancleEdit();
+      this.$store.dispatch('updatePL', this.form)
+        .then(() => {
+          this.$message.success('修改成功');
+          this.cancleEdit();
+        })
+        .catch(() => {
+          this.$message.success('修改失败');
+        });
     },
     cancleEdit() {
       this.$emit('update:editVisible', this.cancleVisible);
