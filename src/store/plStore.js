@@ -5,14 +5,15 @@ const plStore = {
     plList: [],
     getPageSize: 0,
     totalCount: 0,
-    currentpage: 1
+    currentpage: 1,
+    allParkingLotList: [],
   },
   mutations: {
     FETCH_PL_BY_PAGE(state, payload) {
-      state.currentpage = payload.number + 1
+      state.currentpage = payload.number + 1;
       state.plList = payload.content;
-      state.totalCount = payload.totalElements
-      state.getPageSize = payload.pageable.pageSize
+      state.totalCount = payload.totalElements;
+      state.getPageSize = payload.pageable.pageSize;
     },
     SET_PL_LIST(state, payload) {
       state.plList = payload;
@@ -31,16 +32,16 @@ const plStore = {
         }
       });
     },
-    // ADD_PL(state, payload) {
-    //   state.plList.push(payload);
-    // },
+    UPDATE_ALL_PL(state, payload) {
+      state.allParkingLotList = payload;
+    },
   },
   getters: {
     getTotalCount: state => {
-      return state.totalCount
+      return state.totalCount;
     },
     getgetPageSize: state => {
-      return state.getPageSize
+      return state.getPageSize;
     },
     getPlList: state => {
       return state.plList;
@@ -51,21 +52,24 @@ const plStore = {
     getCurrentPage: state => {
       return state.getCurrentPage;
     },
+    allParkingLotList: state => {
+      return state.allParkingLotList;
+    },
   },
   actions: {
     // fetchAllPl({ commit }) {
-      fetchAllPlBypage({
-        commit,
-        state
-      }, payload) {
-        if(!payload) payload = state.currentpage
-        return PlAPI.fetchParklotByPage(payload).then(res => {
-          commit('FETCH_PL_BY_PAGE', res);
-        })
-      },
-      fetchAllPl({
-        commit
-      }) {
+    fetchAllPlBypage({
+                       commit,
+                       state,
+                     }, payload) {
+      if (!payload) payload = state.currentpage;
+      return PlAPI.fetchParklotByPage(payload).then(res => {
+        commit('FETCH_PL_BY_PAGE', res);
+      });
+    },
+    fetchAllPl({
+                 commit,
+               }) {
       return PlAPI.fetchAllPl().then(res => {
         commit('SET_PL_LIST', res);
       });
@@ -86,10 +90,15 @@ const plStore = {
     //   });
     // },
     addPL({
-      dispatch,
-    }, payload) {
+            dispatch,
+          }, payload) {
       return PlAPI.addPl(payload).then(() => {
-        return dispatch('fetchAllPlBypage')
+        return dispatch('fetchAllPlBypage');
+      });
+    },
+    getAllParkingLot({ commit }) {
+      return PlAPI.fetchAllPl().then(list => {
+        return commit('UPDATE_ALL_PL', list);
       });
     },
   },

@@ -33,16 +33,16 @@ const pbStore = {
     },
   },
   getters: {
-    getTotalCount: state => {
+    getParkingBoyTotalCount: state => {
       return state.totalCount
     },
-    getgetPageSize: state => {
+    getParkingBoyPageSize: state => {
       return state.getPageSize
     },
     getPbList: state => {
       return state.pbList;
     },
-    getCurrentPage: state => {
+    getParkingLotCurrentPage: state => {
       return state.getCurrentPage;
     },
   },
