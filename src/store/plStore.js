@@ -46,13 +46,13 @@ const plStore = {
       });
     },
     updatePL({ commit }, payload) {
-      PlAPI.updatePl(payload).then(() => {
-        commit('UPDATE_PL', payload);
+      PlAPI.updatePl(payload).then((res) => {
+        commit('UPDATE_PL', res);
       });
     },
     addPL({ commit }, payload) {
-      PlAPI.addPl(payload).then(() => {
-        commit('ADD_PL', payload);
+      PlAPI.addPl(payload).then((res) => {
+        commit('ADD_PL', res);
       });
     },
   },
