@@ -65,7 +65,7 @@ export default {
       });
     },
   signup() {
-      this.$router.push('/customer/signup')
+      this.$router.push('/customers/signup')
     },
   },
 };
