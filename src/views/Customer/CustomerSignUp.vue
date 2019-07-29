@@ -90,7 +90,7 @@ export default {
             customerService.customerRegister(form)
             .then(() =>{
                  this.$message.success('注册成功');
-                this.$router.push('/customer/signin');
+                this.$router.push('/customers/signin');
             })
             .catch(() => {
                 this.$message.error('注册失败')
