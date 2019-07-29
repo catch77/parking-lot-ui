@@ -15,3 +15,7 @@ export const updatePb = Pb => {
 export const deletePb = PbId => {
   return instance.delete(`/parkingboys/${PbId}`);
 };
+
+export const fetchPbBypage = (page) => {
+  return instance.get(`/parkingboys?page=${page - 1}`);
+};
