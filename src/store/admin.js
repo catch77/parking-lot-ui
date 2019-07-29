@@ -22,7 +22,7 @@ const admin = {
         commit('CLEAR_USER');
         return Promise.reject('Did not login');
       }
-      userService
+      return userService
         .fetchCurrentUser()
         .then(user => {
           commit('SET_USER', user);
