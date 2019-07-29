@@ -43,7 +43,7 @@ export default {
       loading: false,
     };
   },
-  methods: {
+  methods: { 
     login() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
