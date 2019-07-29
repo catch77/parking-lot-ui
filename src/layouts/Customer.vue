@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="mobile-view">
-      <h1 v-show="authorityCheck">拿到了token</h1>
+      <!-- <h1 v-show="authorityCheck">拿到了token</h1> -->
       <router-view></router-view>
     </div>
   </div>

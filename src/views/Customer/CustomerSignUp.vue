@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     goBack() {
-      this.$router.push('/customer/signin');
+      this.$router.push('/customers/signin');
     },
     signUp() {
       this.$refs.signUpForm.validate(valid => {
