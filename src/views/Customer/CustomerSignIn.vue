@@ -55,7 +55,7 @@ export default {
               this.loading = false;
               this.isLoginError = false;
               //跳转路由
-              this.$router.push('/customer/dashboard');
+              this.$router.push('/customers/dashboard');
             })
             .catch(() => {
               this.loading = false;
