@@ -17,7 +17,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="入职时间">
-        <el-input v-model="form.joinTime" :disabled="true"></el-input>
+        <el-input :value="moment(form.joinTime).format('YYYY-MM-DD')" :disabled="true"></el-input>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -27,9 +27,11 @@
   </el-dialog>
 </template>
 <script>
+import moment from 'moment';
 export default {
   data: function() {
     return {
+      moment,
       cancleVisible: false,
     };
   },
