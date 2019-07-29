@@ -31,6 +31,11 @@ export default {
           index: '/admin/console/managePL',
           title: '管理ParkingLot',
         },
+        {
+          icon: 'el-icon-lx-cascades',
+          index: '/admin/console/checkUser',
+          title: '查看用户列表',
+        },
       ],
     };
   },
