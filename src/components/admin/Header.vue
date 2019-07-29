@@ -1,6 +1,6 @@
 <template>
   <div class="admin-header">
-    <h2 class="header-title">停车场管理系统</h2>
+    <h2 class="header-title">Ivy Park 后台管理系统</h2>
     <div class="header-right">
       <div class="header-user-info">
         <el-dropdown trigger="click" @command="handleCommand">
