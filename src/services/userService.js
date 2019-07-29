@@ -11,3 +11,11 @@ export const fetchCurrentUser = () => {
 export const fetchUserByUsername = username => {
   return request.get(`/users/${username}`);
 };
+
+export const fetchCurrentCustomer = () => {
+  return request.get(`/customers/me`);
+};
+
+export const fetchCustomerByCustomername = username => {
+  return request.get(`/customers/${username}`);
+};
