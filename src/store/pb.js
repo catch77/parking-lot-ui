@@ -36,22 +36,22 @@ const pbStore = {
   },
   actions: {
     fetchAllPb({ commit }) {
-      PbAPI.fetchAllPb().then(res => {
+      return PbAPI.fetchAllPb().then(res => {
         commit('SET_PB_LIST', res);
       });
     },
     deletePb({ commit }, payload) {
-      PbAPI.deletePb(payload).then(() => {
+      return PbAPI.deletePb(payload).then(() => {
         commit('DELETE_PB', payload);
       });
     },
     updatePB({ commit }, payload) {
-      PbAPI.updatePb(payload).then(res => {
+      return PbAPI.updatePb(payload).then(res => {
         commit('UPDATE_PB', res);
       });
     },
     addPB({ commit }, payload) {
-      PbAPI.addPb(payload).then(res => {
+      return PbAPI.addPb(payload).then(res => {
         commit('ADD_PB', res);
       });
     },
