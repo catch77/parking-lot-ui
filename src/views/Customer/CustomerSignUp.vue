@@ -88,8 +88,8 @@ export default {
                 user: {...this.user}
             }
             customerService.customerRegister(form)
-            .then(res =>{
-                 this.$message.error('注册成功');
+            .then(() =>{
+                 this.$message.success('注册成功');
                 this.$router.push('/customer/signin');
             })
             .catch(() => {

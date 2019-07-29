@@ -25,12 +25,12 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
     {
-      path: '/customer/signin',
+      path: '/customers/signin',
       name: 'customerSignIn',
       component: () => import('./views/Customer/CustomerSignIn.vue'),
     },
     {
-      path: '/customer/signup',
+      path: '/customers/signup',
       name: 'customerSignUp',
       component: () => import('./views/Customer/CustomerSignUp.vue'),
     },

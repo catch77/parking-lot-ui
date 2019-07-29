@@ -42,12 +42,12 @@ const customer = {
     },
   },
   getters: {
-    user(state) {
-      return state.user;
+    getCustomer(state) {
+      return state.customer;
     },
-    name(state) {
-      if (state.user) {
-        return state.user.name;
+    getCustomerName(state) {
+      if (state.customer) {
+        return state.customer.name;
       }
       return null;
     },
