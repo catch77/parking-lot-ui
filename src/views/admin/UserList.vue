@@ -6,21 +6,21 @@
         border
         class="table"
       >
-        <el-table-column prop="name" label="姓名" width="240" align="center"></el-table-column>
-        <el-table-column prop="username" label="用户名" width="240" align="center"></el-table-column>
+        <el-table-column prop="user.name" label="姓名" width="240" align="center"></el-table-column>
+        <el-table-column prop="user.username" label="用户名" width="240" align="center"></el-table-column>
         <el-table-column prop="phone" label="手机号" width="240" align="center"></el-table-column>
         <el-table-column  prop="point"  label="积分" width="180" align="center"></el-table-column>
-        <el-table-column prop="vip" label="VIP" width="240" align="center"></el-table-column>
+        <!-- <el-table-column prop="vip" label="VIP" width="240" align="center" v-show="false"></el-table-column> -->
         <el-table-column prop="times" label="消费次数" width="240" align="center"></el-table-column>
       </el-table>
       <div class="admin-pagination">
         <el-pagination
           background
-          :page-size="getgetPageSize"
-          :current-page="getCurrentPage"
+          :page-size="getPageSize"
+          :current-page="getCurrentUserPage"
           @current-change="handleCurrentChange"
           layout="prev, pager, next"
-          :total="getTotalCount"
+          :total="getcustomCount"
         ></el-pagination>
       </div>
     </div>
@@ -31,7 +31,7 @@ import moment from 'moment';
 export default {
   name: 'basetable',
   mounted: function() {
-     this.$store.dispatch('fetchAllPbBypage', 1);
+     this.$store.dispatch('fetchAllUlBypage', 1);
   },
   data() {
     return {
@@ -53,23 +53,23 @@ export default {
     };
   },
   computed: {
-    getTotalCount(){
-      return this.$store.getters.getTotalCount
+    getcustomCount(){
+      return this.$store.getters.getcustomCount
     },
     getUserList() {
-      return this.$store.getters.getPbList;
+      return this.$store.getters.getUlList;
     },
-    getgetPageSize() {
-      return this.$store.getters.getgetPageSize;
+    getPageSize() {
+      return this.$store.getters.getPageSize;
     },
-    getCurrentPage(){
-       return this.$store.getters.getCurrentPage
+    getCurrentUserPage(){
+       return this.$store.getters.getCurrentUserPage
     }
   },
   methods: {
     handleCurrentChange(val) {
       this.currentPage=val
-      this.$store.dispatch('fetchAllPbBypage', val);
+      this.$store.dispatch('fetchAllUlBypage', val);
     },
   },
 };

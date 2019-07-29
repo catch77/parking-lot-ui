@@ -4,6 +4,7 @@ import auth from './store/auth';
 import plStore from './store/plStore';
 import pbStore from './store/pb';
 import admin from './store/admin';
+import userL from './store/userL'
 
 Vue.use(Vuex);
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     plStore,
     pbStore,
     admin,
+    userL,
   },
   state: {
     userName: '',

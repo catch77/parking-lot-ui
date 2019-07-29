@@ -5,7 +5,7 @@ const ulStore = {
     userList: [],
     getPageSize: 0,
     customCount: 0,
-    currentpage: 1
+    currentUserpage: 1
   },
   mutations: {
     FETCH_UL_BY_PAGE(state, payload) {
@@ -22,14 +22,14 @@ const ulStore = {
     getcustomCount: state => {
       return state.customCount
     },
-    getgetPageSize: state => {
+    getPageSize: state => {
       return state.getPageSize
     },
     getUlList: state => {
       return state.userList;
     },
-    getCurrentPage: state => {
-      return state.getCurrentPage;
+    getCurrentUserPage: state => {
+      return state.currentUserpage;
     },
   },
   actions: {
@@ -38,7 +38,8 @@ const ulStore = {
       state
     }, payload) {
       if(!payload) payload = state.currentpage
-      return UlAPI.fetchAllUlBypage(payload).then(res => {
+      return UlAPI.fetchUlBypage(payload).then(res => {
+          console.log(res)
         commit('FETCH_UL_BY_PAGE', res);
       })
     },
