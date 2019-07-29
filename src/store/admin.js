@@ -2,6 +2,7 @@
  * Created by morenyang on 2019-07-28.
  */
 import * as userService from '../services/userService';
+import Router from '../router';
 
 const admin = {
   namespaced: true,
@@ -33,7 +34,11 @@ const admin = {
         });
     },
     clearUser({ commit }) {
-      commit('CLEAR_USER');
+      return new Promise(resolve => {
+        commit('CLEAR_USER');
+        resolve();
+        Router.push(`/admin/login`);
+      });
     },
   },
   getters: {
