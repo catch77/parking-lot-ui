@@ -1,4 +1,4 @@
-import * as PlAPI from '../services/pl';
+import * as PlAPI from '../services/parkingLotService';
 
 const plStore = {
   state: {
