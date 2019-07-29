@@ -24,6 +24,10 @@ export default {
           path: '/admin/console/managePL',
           component: () => import('../views/ManageParkingLot/ManagePL.vue'),
         },
+        {
+          path: '/admin/console/checkUser',
+          component: () => import('../views/admin/UserList.vue'),
+        },
       ],
     },
     {
