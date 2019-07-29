@@ -11,8 +11,8 @@
         <el-input v-model="form.name"></el-input>
       </el-form-item>
 
-      <el-form-item label="容量">
-        <el-input v-model="form.capacity"></el-input>
+      <el-form-item label="容量" >
+        <el-input-number v-model="form.capacity"></el-input-number>
       </el-form-item>
       <el-form-item label="地址">
         <el-input v-model="form.address"></el-input>
