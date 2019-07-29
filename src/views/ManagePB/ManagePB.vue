@@ -2,23 +2,30 @@
   <div>
     <div class="admin-container">
       <div class="handle-box">
-        <el-input v-show="false" v-model="select_word" placeholder="搜索" class="handle-input mr10"></el-input>
-        <el-button v-show="false" type="primary" icon="el-icon-search" @click="selectPB">搜索</el-button>
         <el-button v-show="false" type="primary" @click="getAllPBList">查看全部</el-button>
         <el-button class="add" type="primary" @click="handleAdd">添加</el-button>
       </div>
-      <el-table :data="getPbList.slice((currentPage - 1) * pagesize, currentPage * pagesize)" border class="table">
+      <el-table
+        :data="getPbList"
+        border
+        class="table"
+      >
         <el-table-column prop="name" label="姓名" width="240"></el-table-column>
         <el-table-column prop="gender" label="性别" width="240"></el-table-column>
         <el-table-column prop="joinTime" label="入职时间">
-          <template slot-scope="scope">
-            {{ moment(scope.row.joinTime).format('YYYY-MM-DD HH:mm:ss') }}
-          </template>
+          <template
+            slot-scope="scope"
+          >{{ moment(scope.row.joinTime).format('YYYY-MM-DD HH:mm:ss') }}</template>
         </el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button>
-            <el-button type="text" icon="el-icon-delete" class="red" @click="handleDelete(scope.row)">删除</el-button>
+            <el-button
+              type="text"
+              icon="el-icon-delete"
+              class="red"
+              @click="handleDelete(scope.row)"
+            >删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -26,18 +33,23 @@
       <div class="admin-pagination">
         <el-pagination
           background
-          :page-size="pagesize"
-          :current-page="currentPage"
+          :page-size="getgetPageSize"
+          :current-page="getCurrentPage"
           @current-change="handleCurrentChange"
           layout="prev, pager, next"
-          :total="getPbList.length"
+          :total="getTotalCount"
         ></el-pagination>
       </div>
     </div>
 
     <PBAdd :addVisible.sync="addVisible"></PBAdd>
     <PbEdit :editVisible.sync="editVisible" :form="form"></PbEdit>
-    <PbDel :delVisible="delVisible" :currentPage="currentPage" @cancleDel="cancleDel($event)" :id="id"></PbDel>
+    <PbDel
+      :delVisible="delVisible"
+      :currentPage="currentPage"
+      @cancleDel="cancleDel($event)"
+      :id="id"
+    ></PbDel>
   </div>
 </template>
 
@@ -50,7 +62,7 @@ import moment from 'moment';
 export default {
   name: 'basetable',
   mounted: function() {
-    this.$store.dispatch('fetchAllPb');
+     this.$store.dispatch('fetchAllPbBypage', 1);
   },
   components: {
     PBAdd,
@@ -60,9 +72,9 @@ export default {
   data() {
     return {
       moment,
+      currentPage:1,
       pbList: [],
-      currentPage: 1,
-      pagesize: 5,
+      getPageNumber: 1,
       select_word: '',
       editVisible: false,
       delVisible: false,
@@ -77,19 +89,26 @@ export default {
     };
   },
   computed: {
+    getTotalCount(){
+      return this.$store.getters.getTotalCount
+    },
     getPbList() {
       return this.$store.getters.getPbList;
     },
+    getgetPageSize() {
+      return this.$store.getters.getgetPageSize;
+    },
+    getCurrentPage(){
+       return this.$store.getters.getCurrentPage
+    }
   },
   methods: {
     handleCurrentChange(val) {
-      this.currentPage = val;
+      this.currentPage=val
+      this.$store.dispatch('fetchAllPbBypage', val);
     },
     getAllPBList() {
       this.pbList = this.getPbList;
-    },
-    selectPB() {
-      this.pbList = this.$store.getters.getPbListByName(this.select_word);
     },
     handleAdd() {
       this.addVisible = true;
