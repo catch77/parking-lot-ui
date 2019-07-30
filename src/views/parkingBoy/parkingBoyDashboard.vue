@@ -40,10 +40,10 @@ export default {
   },
   methods: {
     handleLookMyOrder() {
-      // this.$router.push("/");
+      this.$router.push("/pb/myorder");
     },
     handleLookAllOrder() {
-    //   this.$router.push('/customers/orderconfirm');
+      this.$router.push('/pb/allorder');
     },
   },
   computed: {
