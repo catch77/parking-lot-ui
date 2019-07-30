@@ -13,12 +13,12 @@ export default new Router({
     {
       path: '/customers/signin',
       name: 'customerSignIn',
-      component: () => import('./views/Customer/CustomerSignIn.vue'),
+      component: () => import('./views/customer/CustomerSignIn.vue'),
     },
     {
       path: '/customers/signup',
       name: 'customerSignUp',
-      component: () => import('./views/Customer/CustomerSignUp.vue'),
+      component: () => import('./views/customer/CustomerSignUp.vue'),
     },
     adminRouter,
     customerRouter,
