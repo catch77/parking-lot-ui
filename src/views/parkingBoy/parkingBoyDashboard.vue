@@ -8,24 +8,29 @@
         </div>
         <br/>
         <br/>
-        <div class="card">
-            <el-card class="box-card" :body-style="{ padding: '60px' }">
+        <div class="card" v-if="false">
+            <el-card class="box-card" :body-style="{ padding: '60px' }" style="border-radius:15px" @click.native="handleLookMyOrder">
               <div  class="clearfix">
-             <span >查看我的订单</span>
-              <el-button style="float: right; padding: 3px 0" type="text" @click="handleLookMyOrder">进入</el-button>
+             <span >查看指派中的订单</span>
               </div>
             </el-card>
         </div>
         <br/>
         <br/>
-        <div class="card">
-            <el-card class="box-card" :body-style="{ padding: '60px' }">
-            <div  class="clearfix">
-            <span>查看所有订单</span>
-            <el-button style="float: right; padding: 3px 0" type="text" @click="handleLookAllOrder">进入</el-button>
+        <div class="card" style="text-align:right">
+            <el-card class="box-card" :body-style="{ padding: '60px' }" style="border-radius:15px" @click.native="handleLookAllOrder">
+            <div  class="clearfix" style="text-align:center">
+            <span >查看所有订单</span>
             </div>
             </el-card>
+            
+            <el-switch
+                style="margin-top: 20px"
+                v-model="value1"
+                inactive-text="开启抢单">
+            </el-switch>
         </div>
+    
     </div>
 </template>
 <script>
@@ -33,6 +38,7 @@ export default {
   data: function() {
     return {
       canclevisible: false,
+      value1: true,
     };
   },
   props: {
@@ -89,7 +95,8 @@ export default {
   }
 
   .box-card {
-    width: 480px;
+    width: 100%;
+    font-size:2em
   }
 }
 </style>
