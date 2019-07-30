@@ -27,8 +27,10 @@
             <el-switch
                 style="margin-top: 20px"
                 v-model="value1"
-                inactive-text="开启抢单">
+                inactive-text="改变抢单状态">
+                <!-- change="changeParkingboyStatus" -->
             </el-switch>
+            <p v-show="false">{{changeParkingboyStatus}}</p>
         </div>
     
     </div>
@@ -38,7 +40,8 @@ export default {
   data: function() {
     return {
       canclevisible: false,
-      value1: true,
+      value1: false,
+    //   value1: this.$store.getters['parkingboy/getParkingboyId'],
     };
   },
   props: {
@@ -59,6 +62,14 @@ export default {
         ? this.$store.getters['parkingboy/getParkingboy'].user.name
         : '';
     },
+    changeParkingboyStatus () {
+        if (this.value1){
+            let id = this.$store.getters['parkingboy/getParkingboyId']
+            this.$store.dispatch('changeParkingboyStatus', id);
+            return true;
+        }
+        return false;
+    }
   },
 };
 </script>

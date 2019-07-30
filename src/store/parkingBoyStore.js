@@ -54,7 +54,16 @@ const parkingboy = {
     },
     setCurrentParkOrder({ commit }, order){
         commit('SET_CURRENTORDER', order)
-    }
+    },
+    changeParkingboyStatus({ commit }, id){
+        userService.fetchParkingboyByParkingboyId(id)
+        .then(
+            
+        )
+        .catch(err => {
+            throw err;
+          });
+    },
   },
   getters: {
     getParkingboy(state) {
@@ -65,6 +74,12 @@ const parkingboy = {
         return state.parkingboy.name;
       }
       return null;
+    },
+    getParkingboyId(state) {
+        if (state.parkingboy) {
+          return state.parkingboy.id;
+        }
+        return null;
     },
     getParkOrders(state) {
         return state.parkOrders;
