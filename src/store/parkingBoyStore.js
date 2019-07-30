@@ -84,8 +84,8 @@ const parkingboy = {
     getParkOrders(state) {
         return state.parkOrders;
     },
-    getCurrentParkOrde(state) {
-        return state.currentParkOrde;
+    getCurrentParkOrder(state) {
+        return state.currentParkOrder;
     },
   },
 };
