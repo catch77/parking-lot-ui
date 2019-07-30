@@ -10,19 +10,19 @@ export default {
       children: [
         {
           path: '/admin/console',
-          component: () => import('../views/Dashboard/Dashboard.vue'),
+          component: () => import('../views/admin/Dashboard/Dashboard.vue'),
         },
         {
           path: '/admin/console/Dashboard',
-          component: () => import('../views/Dashboard/Dashboard.vue'),
+          component: () => import('../views/admin/Dashboard/Dashboard.vue'),
         },
         {
           path: '/admin/console/managePB',
-          component: () => import('../views/ManagePB/ManagePB.vue'),
+          component: () => import('../views/admin/ManagePB/ManagePB.vue'),
         },
         {
           path: '/admin/console/managePL',
-          component: () => import('../views/ManageParkingLot/ManagePL.vue'),
+          component: () => import('../views/admin/ManageParkingLot/ManagePL.vue'),
         },
         {
           path: '/admin/console/checkUser',

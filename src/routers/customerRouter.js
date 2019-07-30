@@ -6,23 +6,23 @@ export default {
     {
       path: '/customers/dashboard',
       name: 'customerselect',
-      component: () => import('../views/Customer/customerSelect/CustomerSelect'),
+      component: () => import('../views/customer/CustomerHome'),
     },
     {
       path: '/customers/userorder',
       name: 'userorder',
-      component: () => import('../views/order/UserOrder.vue'),
+      component: () => import('../views/customer/order/UserOrder.vue'),
     },
 
     {
       path: '/customers/finishedorder',
       name: 'finishedorder',
-      component: () => import('../views/order/FinishedOrder.vue'),
+      component: () => import('../views/customer/order/FinishedOrder.vue'),
     },
     {
       path: '/customers/orderconfirm',
       name: 'orderconfirm',
-      component: () => import('../views/order/OrderConfirm.vue'),
+      component: () => import('../views/customer/order/OrderConfirm.vue'),
     },
   ],
 };
