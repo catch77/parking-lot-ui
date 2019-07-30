@@ -8,3 +8,6 @@ export const fetchParkingboyByParkingboyname = username => {
   return request.get(`/parking-boys/${username}`);
 };
 
+export const fetchParkingboyOrders = () => {
+    return request.get(`/parking-boys/orders`);
+  };

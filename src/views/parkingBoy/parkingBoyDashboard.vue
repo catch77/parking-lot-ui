@@ -49,7 +49,8 @@ export default {
       this.$router.push("/pb/myorder");
     },
     handleLookAllOrder() {
-      this.$router.push('/pb/allorder');
+        this.$store.dispatch('parkingboy/setParkingBoyOrders');
+        this.$router.push('/pb/allorder');
     },
   },
   computed: {
