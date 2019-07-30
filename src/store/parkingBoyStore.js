@@ -15,7 +15,7 @@ const parkingboy = {
       state.parkOrders = null;
     },
     SET_PARKORDERS(state, orders) {
-        state.parkOrders = orders.data;
+        state.parkOrders = orders;
     },
     SET_CURRENTORDER(state, order) {
         state.currentParkOrder = order;

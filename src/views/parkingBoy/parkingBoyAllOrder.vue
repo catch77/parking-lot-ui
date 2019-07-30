@@ -106,7 +106,9 @@ export default {
         }
     },
     computed: {
-        orderList: this.$store.getters['parkingboy/getParkOrders'],
+        orderList(){
+            return this.$store.getters['parkingboy/getParkOrders'];
+        }
     },
 }
 </script>

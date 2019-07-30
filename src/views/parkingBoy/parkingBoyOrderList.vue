@@ -91,7 +91,9 @@ export default {
         },
     },
     computed: {
-        order: this.$store.getters['parkingboy/getCurrentParkOrde'],
+        order () { 
+            return this.$store.getters['parkingboy/getCurrentParkOrde'];
+        }
     }
 }
 </script>

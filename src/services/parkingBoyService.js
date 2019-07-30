@@ -11,3 +11,7 @@ export const fetchParkingboyByParkingboyname = username => {
 export const fetchParkingboyOrders = () => {
     return request.get(`/orders/parking-boys/orders`);
   };
+
+export const fetchParkingboyByParkingboyId = (id) => {
+    return request.post(`/parking-boys/${id}/parking-status`);
+  };
