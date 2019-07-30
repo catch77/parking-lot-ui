@@ -9,5 +9,5 @@ export const fetchParkingboyByParkingboyname = username => {
 };
 
 export const fetchParkingboyOrders = () => {
-    return request.get(`/parking-boys/orders`);
+    return request.get(`/orders/parking-boys/orders`);
   };
