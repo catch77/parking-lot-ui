@@ -72,7 +72,7 @@ export default {
   },
   mounted() {
     if (this.$store.getters.isLogin) {
-      this.$router.push('/customers/dashboard');
+      // this.$router.push('/customers/dashboard');
     }
   },
   methods: {
