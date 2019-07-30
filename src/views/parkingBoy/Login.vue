@@ -1,7 +1,7 @@
 <template>
   <el-row type="flex" justify="center" align="center" class="login-wrapper">
     <el-form :model="user" label-width="0" class="login-container" status-icon ref="loginForm" :rules="rules">
-      <h3 class="login-form-title">登录</h3>
+      <h3 class="login-form-title">停车员登录</h3>
       <el-alert
         v-if="isLoginError"
         title="用户名或密码错误"
@@ -20,7 +20,6 @@
         <el-button type="primary" @click="login" class="login-btn" :loading="loading">登录</el-button>
       </el-form-item>
     </el-form>
-    <router-view />
   </el-row>
 </template>
 <script>
@@ -50,7 +49,7 @@ export default {
             .then(() => {
               this.loading = false;
               this.isLoginError = false;
-              this.$router.push('/pb/home');
+              this.$router.push('/pb/dashboard');
             })
             .catch(() => {
               this.loading = false;

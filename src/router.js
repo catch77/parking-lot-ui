@@ -20,6 +20,11 @@ export default new Router({
       name: 'customerSignUp',
       component: () => import('./views/customer/CustomerSignUp.vue'),
     },
+    {
+      path: '/pb/login',
+      name: 'paLogin',
+      component: () => import('./views/parkingBoy/Login.vue'),
+    },
     adminRouter,
     customerRouter,
     parkingBoyRouter,

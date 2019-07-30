@@ -33,9 +33,7 @@ const auth = {
           commit('SET_TOKEN', _token);
           return authHelper.getAuthState();
         })
-        .then(() => {
-          dispatch('fetchPrincipal');
-        });
+        .then(() => dispatch('fetchPrincipal'));
     },
     fetchPrincipal({ commit }) {
       return authService
@@ -54,6 +52,7 @@ const auth = {
         commit('CLEAR_TOKEN');
         dispatch('admin/clearUser');
         dispatch('customer/clearCustomer');
+        dispatch('parkingboy/clearParkingboy');
         resolve();
       });
     },
