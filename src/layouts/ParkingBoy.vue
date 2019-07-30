@@ -29,24 +29,24 @@ export default {
   components: {
 
   },
-  //  mounted() {
-  //     if (!this.$store.getters.isLogin) {
-  //       this.$router.push('/pb/login');
-  //       return;
-  //     }
-  //     this.$store
-  //       .dispatch('parkingboy/getParkingboy')
-  //       .then(() => {
-  //         if (!this.$store.getters.roles.includes('PARKINGBOY')) {
-  //           this.$message.error('请从正确的入口登录');
-  //           this.$router.push("/pb/login");
-  //         }
-  //         this.authorityCheck = true;
-  //       })
-  //       .catch(() => {
-  //         this.$router.push("/pb/login");
-  //       });
-  //   },
+   mounted() {
+      if (!this.$store.getters.isLogin) {
+        this.$router.push('/pb/login');
+        return;
+      }
+      this.$store
+        .dispatch('parkingboy/getParkingboy')
+        .then(() => {
+          if (!this.$store.getters.roles.includes('PARKINGBOY')) {
+            this.$message.error('请从正确的入口登录');
+            this.$router.push("/pb/login");
+          }
+          this.authorityCheck = true;
+        })
+        .catch(() => {
+          this.$router.push("/pb/login");
+        });
+    },
 };
 </script>
 

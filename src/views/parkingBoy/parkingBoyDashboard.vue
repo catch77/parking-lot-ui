@@ -48,10 +48,9 @@ export default {
   },
   computed: {
     name() {
-    //   return this.$store.getters['parkingboy/getParkingboy'] && this.$store.getters['parkingboy/getParkingboy'].user
-    //     ? this.$store.getters['parkingboy/getParkingboy'].user.name
-    //     : '';
-    return '杨腾'
+      return this.$store.getters['parkingboy/getParkingboy'] && this.$store.getters['parkingboy/getParkingboy'].user
+        ? this.$store.getters['parkingboy/getParkingboy'].user.name
+        : '';
     },
   },
 };
