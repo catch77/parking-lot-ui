@@ -33,9 +33,7 @@ const auth = {
           commit('SET_TOKEN', _token);
           return authHelper.getAuthState();
         })
-        .then(() => {
-          dispatch('fetchPrincipal');
-        });
+        .then(() => dispatch('fetchPrincipal'));
     },
     fetchPrincipal({ commit }) {
       return authService

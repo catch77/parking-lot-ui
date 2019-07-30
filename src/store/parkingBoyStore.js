@@ -23,7 +23,7 @@ const parkingboy = {
         return Promise.reject('Did not login');
       }
       return userService
-        .fetchCurrentParkingboyr()
+        .fetchCurrentParkingboy()
         .then(user => {
           commit('SET_USER', user);
         })

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="mobile-view">
-      <h1>parkingboy</h1>
+      <!-- <h1>parkingboy</h1> -->
       <router-view v-if="authorityCheck"></router-view>
     </div>
           <div class="mobile-view-footer">
@@ -15,7 +15,7 @@ export default {
   name: 'ParkingBoy',
   data() {
       return {
-        authorityCheck: false,
+        authorityCheck: true,
       };
   },
   methods: {
@@ -29,24 +29,24 @@ export default {
   components: {
 
   },
-   mounted() {
-      if (!this.$store.getters.isLogin) {
-        this.$router.push('/pb/login');
-        return;
-      }
-      this.$store
-        .dispatch('parkingboy/getParkingboy')
-        .then(() => {
-          if (!this.$store.getters.roles.includes('ADMIN')) {
-            this.$message.error('请从正确的入口登录');
-            this.$router.push("/pb/login");
-          }
-          this.authorityCheck = true;
-        })
-        .catch(() => {
-          this.$router.push("/pb/login");
-        });
-    },
+  //  mounted() {
+  //     if (!this.$store.getters.isLogin) {
+  //       this.$router.push('/pb/login');
+  //       return;
+  //     }
+  //     this.$store
+  //       .dispatch('parkingboy/getParkingboy')
+  //       .then(() => {
+  //         if (!this.$store.getters.roles.includes('PARKINGBOY')) {
+  //           this.$message.error('请从正确的入口登录');
+  //           this.$router.push("/pb/login");
+  //         }
+  //         this.authorityCheck = true;
+  //       })
+  //       .catch(() => {
+  //         this.$router.push("/pb/login");
+  //       });
+  //   },
 };
 </script>
 

@@ -1,6 +1,6 @@
 export default {
   path: '/pb',
-  component: () => import('../views/parkingBoy/Login.vue'),
+  component: () => import('../layouts/ParkingBoy'),
   children: [
     {
       path: '/pb/dashboard',

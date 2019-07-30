@@ -49,14 +49,11 @@ export default {
             .then(() => {
               this.loading = false;
               this.isLoginError = false;
-              console.login('PUSH SUccess')
               this.$router.push('/pb/dashboard');
-              
             })
             .catch(() => {
               this.loading = false;
               this.isLoginError = true;
-              console.log('PUSH wrong')
             });
         }
       });

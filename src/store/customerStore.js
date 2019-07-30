@@ -1,5 +1,4 @@
 import * as userService from '../services/customerService';
-import Router from '../router';
 
 const customer = {
   namespaced: true,
@@ -37,7 +36,6 @@ const customer = {
       return new Promise(resolve => {
         commit('CLEAR_USER');
         resolve();
-        // Router.push(`/customer/signin`);
       });
     },
   },
