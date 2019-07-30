@@ -6,13 +6,13 @@
             <div  class="clearfix" >
                 <el-row :guttur="5">
                     <el-col :span="6"><span>订单编号</span></el-col>
-                    <el-col :span="10"><span>{{order.orderNumber}}</span></el-col>
+                    <el-col :span="10"><span>{{order.orderId}}</span></el-col>
                 </el-row>
                 <el-row :guttur="5">
                     <el-col :span="6"><span>订单状态</span></el-col>
                     <el-col :span="10">
-                        <span v-if="order.orderStatus==='FETCH'">取车</span>
-                        <span v-else>停车</span>
+                        <span v-if="order.orderStatus==='PARK'">停车</span>
+                        <span v-else>取车</span>
                     </el-col>
                 </el-row>
                 <br>
@@ -22,7 +22,7 @@
                 </el-row>
                 <el-row :guttur="5">
                     <el-col :span="6"><span>顾客电话</span></el-col>
-                    <el-col :span="10"><span>{{order.customerPhone}}</span></el-col>
+                    <el-col :span="10"><span>{{order.phone}}</span></el-col>
                 </el-row>
                 <el-row :guttur="5">
                     <el-col :span="6"><span>车牌号</span></el-col>
@@ -42,11 +42,11 @@
                 </el-row>
                 <el-row :guttur="5" >
                     <el-col :span="6"><span>停车员</span></el-col>
-                    <el-col :span="10"><span>{{order.parkParkingBoy}}</span></el-col>
+                    <el-col :span="10"><span>{{order.parkParkingBoyName}}</span></el-col>
                 </el-row>
                 <el-row :guttur="5" >
                     <el-col :span="6"><span>取车人</span></el-col>
-                    <el-col :span="10"><span>{{order.fetchParkingBoy}}</span></el-col>
+                    <el-col :span="10"><span>{{order.fetchParkingBoyName}}</span></el-col>
                 </el-row>
                 <br>
                 <el-row :guttur="5" >
