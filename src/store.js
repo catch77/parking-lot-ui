@@ -9,6 +9,8 @@ import customer from './store/customerStore';
 import order from './store/order';
 import hrStore from './store/hr'
 import manageOrdersStore from './store/manageOrderStore'
+import customerOrder from './store/customerOrder';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -22,6 +24,7 @@ export default new Vuex.Store({
     order,
     hrStore,
     manageOrdersStore
+    customerOrder,
   },
   state: {
     userName: '',

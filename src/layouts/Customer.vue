@@ -40,10 +40,9 @@
     },
     methods: {
       handleLogout() {
-        this.$store.dispatch("logout")
-          .then(() => {
-            this.$router.push("/customers/signin")
-          })
+        this.$store.dispatch('logout').then(() => {
+          this.$router.push('/customers/signin');
+        });
       },
     },
   };
@@ -67,5 +66,16 @@
     justify-content: center;
     padding-bottom: 20px;
     color: #8c939d;
+  }
+
+
+</style>
+<style lang="scss">
+  .customer-page-title {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    padding-top: 20px;
   }
 </style>
