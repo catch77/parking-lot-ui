@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Hello, {{$store.getters['admin/user'].name}}</h2>
+    <h2>Hello, {{ $store.getters['admin/user'].name }}</h2>
   </div>
 </template>
 

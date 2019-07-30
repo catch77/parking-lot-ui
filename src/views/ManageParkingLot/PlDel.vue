@@ -27,8 +27,9 @@ export default {
   },
   methods: {
     deletePl() {
-      this.$store.dispatch('deletePl', this.id)
-      .then(() => {
+      this.$store
+        .dispatch('deletePl', this.id)
+        .then(() => {
           this.$message.success('删除成功');
           this.cancleDel(1);
         })

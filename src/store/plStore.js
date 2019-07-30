@@ -58,18 +58,13 @@ const plStore = {
   },
   actions: {
     // fetchAllPl({ commit }) {
-    fetchAllPlBypage({
-                       commit,
-                       state,
-                     }, payload) {
+    fetchAllPlBypage({ commit, state }, payload) {
       if (!payload) payload = state.currentpage;
       return PlAPI.fetchParklotByPage(payload).then(res => {
         commit('FETCH_PL_BY_PAGE', res);
       });
     },
-    fetchAllPl({
-                 commit,
-               }) {
+    fetchAllPl({ commit }) {
       return PlAPI.fetchAllPl().then(res => {
         commit('SET_PL_LIST', res);
       });
@@ -80,7 +75,7 @@ const plStore = {
       });
     },
     updatePL({ commit }, payload) {
-      return PlAPI.updatePl(payload).then((res) => {
+      return PlAPI.updatePl(payload).then(res => {
         commit('UPDATE_PL', res);
       });
     },
@@ -89,9 +84,7 @@ const plStore = {
     //     commit('ADD_PL', res);
     //   });
     // },
-    addPL({
-            dispatch,
-          }, payload) {
+    addPL({ dispatch }, payload) {
       return PlAPI.addPl(payload).then(() => {
         return dispatch('fetchAllPlBypage');
       });

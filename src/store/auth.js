@@ -50,7 +50,7 @@ const auth = {
         });
     },
     logout({ commit, dispatch }) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         commit('CLEAR_TOKEN');
         dispatch('admin/clearUser');
         resolve();

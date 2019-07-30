@@ -71,8 +71,8 @@ export default {
     };
   },
   computed: {
-    getTotalCount(){
-      return this.$store.getters.getTotalCount
+    getTotalCount() {
+      return this.$store.getters.getTotalCount;
     },
     plList() {
       return this.$store.getters.getPlList;
@@ -80,9 +80,9 @@ export default {
     getgetPageSize() {
       return this.$store.getters.getgetPageSize;
     },
-    getCurrentPage(){
-       return this.$store.getters.getCurrentPage
-    }
+    getCurrentPage() {
+      return this.$store.getters.getCurrentPage;
+    },
   },
   methods: {
     handleCurrentChange(val) {

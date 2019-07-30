@@ -16,10 +16,10 @@ export const deletePb = PbId => {
   return instance.delete(`/parking-boys/${PbId}`);
 };
 
-export const fetchPbBypage = (page) => {
+export const fetchPbBypage = page => {
   return instance.get(`/parking-boys?page=${page - 1}`);
 };
 
-export const updateParkingBoyParkingLot = (parkingBoy) => {
+export const updateParkingBoyParkingLot = parkingBoy => {
   return instance.put(`/parking-boys/${parkingBoy.id}/parking-lots`, parkingBoy.parkingLotList);
 };

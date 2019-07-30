@@ -23,6 +23,6 @@ export default {
       path: '/customers/orderconfirm',
       name: 'orderconfirm',
       component: () => import('../views/order/OrderConfirm.vue'),
-    }
+    },
   ],
 };

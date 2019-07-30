@@ -5,27 +5,27 @@ const pbStore = {
     pbList: [],
     getPageSize: 0,
     totalCount: 0,
-    currentpage: 1
+    currentpage: 1,
   },
   mutations: {
     FETCH_PB_BY_PAGE(state, payload) {
-      state.currentpage = payload.number + 1
+      state.currentpage = payload.number + 1;
       state.pbList = payload.content;
-      state.totalCount = payload.totalElements
-      state.getPageSize = payload.pageable.pageSize
+      state.totalCount = payload.totalElements;
+      state.getPageSize = payload.pageable.pageSize;
     },
     SET_PB_LIST(state, payload) {
       state.pbList = payload;
     },
     DELETE_PB(state, payload) {
-      state.pbList.forEach(function (item, index) {
+      state.pbList.forEach(function(item, index) {
         if (item.id === payload) {
           state.pbList.splice(index, 1);
         }
       });
     },
     UPDATE_PB(state, payload) {
-      state.pbList.forEach(function (item, index) {
+      state.pbList.forEach(function(item, index) {
         if (item.id === payload.id) {
           state.pbList.splice(index, 1, payload);
         }
@@ -34,10 +34,10 @@ const pbStore = {
   },
   getters: {
     getParkingBoyTotalCount: state => {
-      return state.totalCount
+      return state.totalCount;
     },
     getParkingBoyPageSize: state => {
-      return state.getPageSize
+      return state.getPageSize;
     },
     getPbList: state => {
       return state.pbList;
@@ -47,41 +47,30 @@ const pbStore = {
     },
   },
   actions: {
-    fetchAllPbBypage({
-      commit,
-      state
-    }, payload) {
-      if(!payload) payload = state.currentpage
+    fetchAllPbBypage({ commit, state }, payload) {
+      if (!payload) payload = state.currentpage;
       return PbAPI.fetchPbBypage(payload).then(res => {
         commit('FETCH_PB_BY_PAGE', res);
-      })
+      });
     },
-    fetchAllPb({
-      commit
-    }) {
+    fetchAllPb({ commit }) {
       return PbAPI.fetchAllPb().then(res => {
         commit('SET_PB_LIST', res);
       });
     },
-    deletePb({
-      commit
-    }, payload) {
+    deletePb({ commit }, payload) {
       return PbAPI.deletePb(payload).then(() => {
         commit('DELETE_PB', payload);
       });
     },
-    updatePB({
-      commit
-    }, payload) {
+    updatePB({ commit }, payload) {
       return PbAPI.updatePb(payload).then(res => {
         commit('UPDATE_PB', res);
       });
     },
-    addPB({
-      dispatch,
-    }, payload) {
+    addPB({ dispatch }, payload) {
       return PbAPI.addPb(payload).then(() => {
-        return dispatch('fetchAllPbBypage')
+        return dispatch('fetchAllPbBypage');
       });
     },
   },

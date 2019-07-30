@@ -1,15 +1,11 @@
 <template>
   <div>
     <div class="admin-container">
-      <el-table
-        :data="getUserList"
-        border
-        class="table"
-      >
+      <el-table :data="getUserList" border class="table">
         <el-table-column prop="user.name" label="姓名" width="240" align="center"></el-table-column>
         <el-table-column prop="user.username" label="用户名" width="240" align="center"></el-table-column>
         <el-table-column prop="phone" label="手机号" width="240" align="center"></el-table-column>
-        <el-table-column  prop="point"  label="积分" width="180" align="center"></el-table-column>
+        <el-table-column prop="point" label="积分" width="180" align="center"></el-table-column>
         <!-- <el-table-column prop="vip" label="VIP" width="240" align="center" v-show="false"></el-table-column> -->
         <el-table-column prop="times" label="消费次数" width="240" align="center"></el-table-column>
       </el-table>
@@ -31,12 +27,12 @@ import moment from 'moment';
 export default {
   name: 'basetable',
   mounted: function() {
-     this.$store.dispatch('fetchAllUlBypage', 1);
+    this.$store.dispatch('fetchAllUlBypage', 1);
   },
   data() {
     return {
       moment,
-      currentPage:1,
+      currentPage: 1,
       userList: [],
       getPageNumber: 1,
       select_word: '',
@@ -44,17 +40,17 @@ export default {
       form: {
         id: '',
         name: '',
-        username:'',
-        phone:'',
-        point:'',
-        vip:'',
+        username: '',
+        phone: '',
+        point: '',
+        vip: '',
         times: '',
       },
     };
   },
   computed: {
-    getcustomCount(){
-      return this.$store.getters.getcustomCount
+    getcustomCount() {
+      return this.$store.getters.getcustomCount;
     },
     getUserList() {
       return this.$store.getters.getUlList;
@@ -62,13 +58,13 @@ export default {
     getPageSize() {
       return this.$store.getters.getPageSize;
     },
-    getCurrentUserPage(){
-       return this.$store.getters.getCurrentUserPage
-    }
+    getCurrentUserPage() {
+      return this.$store.getters.getCurrentUserPage;
+    },
   },
   methods: {
     handleCurrentChange(val) {
-      this.currentPage=val
+      this.currentPage = val;
       this.$store.dispatch('fetchAllUlBypage', val);
     },
   },
@@ -103,7 +99,3 @@ export default {
   margin-right: 10px;
 }
 </style>
-
-
-
-

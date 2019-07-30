@@ -1,18 +1,17 @@
 <template>
   <div class="wrapper">
     <div class="mobile-view">
-
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'ParkingBoy',
-  };
+export default {
+  name: 'ParkingBoy',
+};
 </script>
 
 <style scoped lang="scss">
-  @import "../assets/css/mobile-view";
+@import '../assets/css/mobile-view';
 </style>

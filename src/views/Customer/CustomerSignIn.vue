@@ -43,7 +43,12 @@ export default {
       loading: false,
     };
   },
-  methods: { 
+  mounted() {
+    if (this.$store.getters.isLogin) {
+      this.$router.push('/customers/dashboard');
+    }
+  },
+  methods: {
     login() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
@@ -64,8 +69,8 @@ export default {
         }
       });
     },
-  signup() {
-      this.$router.push('/customers/signup')
+    signup() {
+      this.$router.push('/customers/signup');
     },
   },
 };

@@ -21,7 +21,7 @@ const order = {
   getters: {
     CarNo(state) {
       return state.carNo;
-    }
+    },
   },
 };
 

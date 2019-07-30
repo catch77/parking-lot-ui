@@ -1,14 +1,7 @@
 <template>
   <div>
     <el-row type="flex" justify="center" align="center" class="login-wrapper">
-      <el-form
-        :model="user"
-        label-width="100px"
-        class="login-container"
-        status-icon
-        ref="signUpForm"
-        :rules="rules"
-      >
+      <el-form :model="user" label-width="100px" class="login-container" status-icon ref="signUpForm" :rules="rules">
         <h3 class="login-form-title" align="center">用 户 注 册</h3>
         <el-alert
           v-if="isSignUpError"
@@ -45,7 +38,8 @@
 </template>
 
 <script>
-import * as customerService from '../../services/customerService'
+import * as customerService from '../../services/customerService';
+
 export default {
   data() {
     var validatePass2 = (rule, value, callback) => {
@@ -76,6 +70,11 @@ export default {
       isPasswordSame: false,
     };
   },
+  mounted() {
+    if (this.$store.getters.isLogin) {
+      this.$router.push('/customers/dashboard');
+    }
+  },
   methods: {
     goBack() {
       this.$router.push('/customers/signin');
@@ -83,17 +82,18 @@ export default {
     signUp() {
       this.$refs.signUpForm.validate(valid => {
         if (valid) {
-            const form = {
-                phone: this.user.phone,
-                user: {...this.user}
-            }
-            customerService.customerRegister(form)
-            .then(() =>{
-                 this.$message.success('注册成功');
-                this.$router.push('/customers/signin');
+          const form = {
+            phone: this.user.phone,
+            user: { ...this.user },
+          };
+          customerService
+            .customerRegister(form)
+            .then(() => {
+              this.$message.success('注册成功');
+              this.$router.push('/customers/signin');
             })
             .catch(() => {
-                this.$message.error('注册失败')
+              this.$message.error('注册失败');
             });
         }
       });

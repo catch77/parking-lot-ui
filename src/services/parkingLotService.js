@@ -4,7 +4,7 @@ export const fetchAllPl = () => {
   return instance.get('/parking-lots');
 };
 
-export const fetchParklotByPage = (page) => {
+export const fetchParklotByPage = page => {
   return instance.get(`/parking-lots?page=${page - 1}`);
 };
 
