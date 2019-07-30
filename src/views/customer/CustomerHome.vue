@@ -13,7 +13,7 @@
         <FeatureItemCard icon="car-side" title="取车" description="系统会自动为您指派取车员" theme-color="#67C23A"
                          @click="handleFetching"/>
         <FeatureItemCard icon="list-alt" title="所有订单" description="查看您所有的停车订单" theme-color="#344563"
-                         @click="handleParking"/>
+                         @click="handleParking" v-show="false"/>
       </div>
     </el-row>
   </div>
