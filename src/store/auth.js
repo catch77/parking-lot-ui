@@ -54,6 +54,7 @@ const auth = {
         commit('CLEAR_TOKEN');
         dispatch('admin/clearUser');
         dispatch('customer/clearCustomer');
+        dispatch('parkingboy/clearParkingboy');
         resolve();
       });
     },

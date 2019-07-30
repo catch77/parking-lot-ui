@@ -20,7 +20,6 @@
         <el-button type="primary" @click="login" class="login-btn" :loading="loading">登录</el-button>
       </el-form-item>
     </el-form>
-    <router-view />
   </el-row>
 </template>
 <script>
@@ -50,11 +49,14 @@ export default {
             .then(() => {
               this.loading = false;
               this.isLoginError = false;
+              console.login('PUSH SUccess')
               this.$router.push('/pb/dashboard');
+              
             })
             .catch(() => {
               this.loading = false;
               this.isLoginError = true;
+              console.log('PUSH wrong')
             });
         }
       });

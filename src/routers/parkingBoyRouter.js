@@ -3,11 +3,6 @@ export default {
   component: () => import('../views/parkingBoy/Login.vue'),
   children: [
     {
-      path: '/pb/login',
-      name: 'paLogin',
-      component: () => import('../views/parkingBoy/Login.vue'),
-    },
-    {
       path: '/pb/dashboard',
       name: 'paDashboard',
       component: () => import('../views/parkingBoy/parkingBoyDashboard'),
