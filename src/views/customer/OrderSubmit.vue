@@ -78,7 +78,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../style";
+  @import "style";
 
   .confirm-title {
     font-size: 20px;
