@@ -4,9 +4,10 @@
       选择需要取车的订单
     </h1>
     <div class="order-lit">
-      <OrderItemCard @click="handleSubmitFetch"/>
+      <OrderItemCard v-for="order in $store.getters.customerOrderList" :key="order.id" :order="order"
+                     @click="() => handleSubmitFetch(order)"/>
     </div>
-    <el-dialog :visible="showConfirmDialog" class="confirm-dialog" width="90%" v-loading="loading">
+    <el-dialog :visible="showConfirmDialog" class="confirm-dialog" width="90%" v-loading="loading" @close="cancelFetch">
       <div>
         <div class="confirm-content">
           <h2 class="title">请确定是否取车</h2>
@@ -48,14 +49,25 @@
         loading: false,
       };
     },
+    mounted() {
+      this.$store.dispatch('getFetchableOrderList');
+    },
     methods: {
-      handleSubmitFetch() {
+      handleSubmitFetch(order) {
+        this.currentConfirmOrder = order;
         this.showConfirmDialog = true;
       },
       confirmFetch() {
-        this.showConfirmDialog = false;
+        this.$store.dispatch('customerFetchCar', this.currentConfirmOrder.id)
+          .then(res => {
+            this.cancelFetch();
+            this.$router.push(`/customers/fetch-result/${res.id}`)
+          }).catch(() => {
+          this.$message.error('取车失败，请检查停车状态后重试');
+        });
       },
       cancelFetch() {
+        this.currentConfirmOrder = null;
         this.showConfirmDialog = false;
       },
     },

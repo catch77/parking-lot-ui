@@ -8,17 +8,17 @@
         已提交取车
       </div>
     </div>
-    <div class="fetch-content">
+    <div class="fetch-content" v-if="!loading">
       <div class="customer-item-card fetch-parking-boy-card">
         <h3 class="card-title">已为您分配取车员</h3>
         <div class="parking-boy-wrapper">
-          <span class="parking-boy-name"><fa-icon icon="user"/></span>{{order.fetchParkingBoy.name}}
+          <span class="parking-boy-name"><fa-icon icon="user"/></span>{{order && order.fetchParkingBoy.name}}
         </div>
       </div>
-      <OrderItemCard/>
+      <OrderItemCard :order="order || null"/>
     </div>
     <div class="fetch-footer">
-      <el-button type="primary" class="footer-submit-btn">完成</el-button>
+      <el-button type="primary" class="footer-submit-btn" @click="$router.push(`/customers/dashboard`)">完成</el-button>
     </div>
   </div>
 </template>
@@ -35,12 +35,33 @@
     components: { OrderItemCard },
     data() {
       return {
-        order: {
-          fetchParkingBoy: {
-            name: '小明',
-          },
-        },
+        loading: false,
       };
+    },
+    computed: {
+      order() {
+        return this.$store.getters.fetchingOrder;
+      },
+    },
+    mounted() {
+      this.fetchCurrentOrder();
+    },
+    methods: {
+      fetchCurrentOrder() {
+        const orderInStore = this.$store.getters.fetchingOrder;
+        if (!orderInStore || orderInStore.id !== this.$route.params.orderId) {
+          this.loading = true;
+          this.$store.dispatch('fetchFetchingOrder', this.$route.params.orderId)
+            .then(() => {
+              this.loading = false;
+            });
+        }
+      },
+    },
+    watch: {
+      '$route.path'() {
+        this.fetchCurrentOrder();
+      },
     },
   };
 </script>
@@ -68,6 +89,7 @@
     margin-bottom: 12px;
     font-size: 32px;
     line-height: 40px;
+
     .parking-boy-name {
       color: #e68a1c;
       margin-right: 15px;
@@ -77,6 +99,7 @@
 
   .fetch-footer {
     margin: 20px 0 40px;
+
     .footer-submit-btn {
       width: 100%;
     }
