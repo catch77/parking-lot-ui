@@ -8,6 +8,7 @@ import userL from './store/userL';
 import customer from './store/customerStore';
 import order from './store/order';
 import hrStore from './store/hr'
+import manageOrdersStore from './store/manageOrderStore'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -19,7 +20,8 @@ export default new Vuex.Store({
     userL,
     customer,
     order,
-    hrStore
+    hrStore,
+    manageOrdersStore
   },
   state: {
     userName: '',

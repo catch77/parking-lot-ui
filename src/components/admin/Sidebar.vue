@@ -47,6 +47,11 @@ export default {
           index: '/admin/console/manageHr',
           title: '管理HR',
         },
+        {
+          icon: 'el-icon-lx-cascades',
+          index: '/admin/console/manageOrders',
+          title: '管理订单',
+        },
       ],
     };
   },

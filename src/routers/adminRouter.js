@@ -31,6 +31,10 @@ export default {
         {
           path: '/admin/console/manageHr',
           component: () => import('../views/admin/ManageHr/ManageHr.vue'),
+        },
+        {
+          path: '/admin/console/manageOrders',
+          component: () => import('../views/admin/ManageOrders/ManageOrders.vue'),
         }
       ],
     },
