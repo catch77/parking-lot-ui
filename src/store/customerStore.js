@@ -1,5 +1,4 @@
 import * as userService from '../services/customerService';
-import Router from '../router';
 
 const customer = {
   namespaced: true,
