@@ -9,9 +9,9 @@ export const addHr = Hr => {
 };
 
 export const updateHr = Hr => {
-  return instance.get(`/hrs`,Hr);
+  return instance.put(`/hrs`,Hr);
 };
 
 export const deleteHr = HrId => {
-  return instance.get(`/hrs/${HrId}`);
+  return instance.delete(`/hrs/${HrId}`);
 };

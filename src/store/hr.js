@@ -3,13 +3,17 @@ const hrStore = {
   namespaced: true,
   state: {
     hrList: [],
-    currentHrpage: '',
-    hrPageSize: '',
-    totalHrPageSize: '',
+    currentHrpage: 1,
+    hrPageSize: 0,
+    totalHrPageSize: 0,
   },
   mutations: {
     GET_HR_LIST: (state, payload) => {
-      state.hrList = payload;
+      state.hrList = payload.content;
+      state.currentHrpage=payload.number+1,
+      state.hrPageSize=payload.pageable.pageSize,
+      state.totalHrPageSize=payload.totalElements
+      console.log(state)
     },
     DELETE_HR: (state, payload) => {
       state.hrList.forEach(function(item, index) {
@@ -34,22 +38,25 @@ const hrStore = {
       return state.hrPageSize;
     },
     getTotalHrPageSize: state => {
-      return state.totalPageSize;
+      return state.totalHrPageSize;
     },
+    getCurrentHrpage:state=>{
+      return state.currentHrpage
+    }
   },
   actions: {
-    getHrList({ commit }, payload) {
+    getHrList({ commit,state }, payload) {
       if (!payload) payload = state.currentHrpage;
       return HrAPI.fetchHrListByPage(payload).then(res => {
         commit('GET_HR_LIST', res);
       });
     },
-    delete({ commit }, payload) {
-      return HrAPI.deleteHr(payload).then(() => {
-        commit('DELETE_HR');
+    deleteHr({ dispatch }, payload) {
+      return HrAPI.deleteHr(payload.id).then(() => {
+        dispatch('getHrList',1);
       });
     },
-    update({ commit }, payload) {
+    updateHr({ commit }, payload) {
       return HrAPI.updateHr(payload).then(res => {
         commit('UPDATE_HR', res);
       });
