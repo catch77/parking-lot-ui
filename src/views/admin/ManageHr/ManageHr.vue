@@ -4,18 +4,17 @@
       <div class="handle-box">
         <el-button class="add" type="primary" @click="handleAddHr">添加</el-button>
       </div>
-      <el-table :data="getPbList" border class="table">
+      <el-table :data="getHrList" border class="table">
         <el-table-column prop="name" label="姓名"></el-table-column>
-          <template slot-scope="scope">
-            <el-button type="text" icon="el-icon-edit" @click="handleEditHr(scope.row)">编辑</el-button>
-            <el-button
-              type="text"
-              icon="el-icon-delete"
-              class="red"
-              @click="handleDeleteHr(scope.row)"
-            >删除</el-button>
-          </template>
-        </el-table-column>
+        <template slot-scope="scope">
+          <el-button type="text" icon="el-icon-edit" @click="handleEditHr(scope.row)">编辑</el-button>
+          <el-button
+            type="text"
+            icon="el-icon-delete"
+            class="red"
+            @click="handleDeleteHr(scope.row)"
+          >删除</el-button>
+        </template>
       </el-table>
 
       <div class="admin-pagination">
@@ -29,7 +28,6 @@
         ></el-pagination>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -46,6 +44,9 @@ export default {
     return {
       moment,
       currentHrPage: 1,
+      editVisible: false,
+      delVisible: false,
+      addVisible: false,
     };
   },
   computed: {
@@ -61,8 +62,17 @@ export default {
   },
   methods: {
     handleCurrentChange(page) {
-        this.currentHrPage=page
-        this.$store.dispatch('hrStore/getHrList',page)
+      this.currentHrPage = page;
+      this.$store.dispatch('/hrStore/getHrList', page);
+    },
+    handleAddHr() {
+      this.addVisible=true;
+    },
+    handleEditHr() {
+      this.editVisible=true;
+    },
+    handleDeleteHr() {
+      this.delVisible=true
     },
   },
 };
