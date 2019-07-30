@@ -71,7 +71,7 @@ export default {
     };
   },
   mounted() {
-    if (this.$store.getters.isLogin) {
+    if (this.$store.getters.isLogin && this.$store.getters.roles.includes('CUSTOMER')) {
       this.$router.push('/customers/dashboard');
     }
   },
