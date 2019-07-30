@@ -51,7 +51,7 @@
           });
       },
       back() {
-        this.$router.push('/customers/customerselect');
+        this.$router.push('/customers/dashboard');
       },
     },
   };
