@@ -11,7 +11,7 @@
         <FeatureItemCard icon="parking" title="新建停车订单" description="系统会自动为您指派停车员" theme-color="#0052CC"
                          @click="handleParking"/>
         <FeatureItemCard icon="car-side" title="取车" description="系统会自动为您指派取车员" theme-color="#67C23A"
-                         @click="handleParking"/>
+                         @click="handleFetching"/>
         <FeatureItemCard icon="list-alt" title="所有订单" description="查看您所有的停车订单" theme-color="#344563"
                          @click="handleParking"/>
       </div>
@@ -45,7 +45,7 @@
         this.$router.push('/customers/orderconfirm');
       },
       handleFetching() {
-        //this.$router.push("/");
+        this.$router.push('/customers/fetchable-order-list');
       },
     },
     computed: {

@@ -18,5 +18,10 @@ export default {
       name: 'orderconfirm',
       component: () => import('../views/customer/OrderSubmit.vue'),
     },
+    {
+      path: '/customers/fetchable-order-list',
+      name: 'FetchableOrderList',
+      component: () => import('../views/customer/FetchableCardList'),
+    },
   ],
 };
