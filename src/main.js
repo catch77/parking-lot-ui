@@ -5,6 +5,10 @@ import store from './store';
 import element from 'element-ui';
 import './assets/css/element-ui.css';
 
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+Vue.component('fa-icon', FontAwesomeIcon);
+
 Vue.config.productionTip = false;
 
 Vue.use(element);
