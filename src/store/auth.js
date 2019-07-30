@@ -69,6 +69,12 @@ const auth = {
         return state.principal.username;
       }
     },
+    roles(state, getters) {
+      if (getters.isLogin && state.principal) {
+        return state.principal.roles;
+      }
+      return [];
+    },
   },
 };
 
