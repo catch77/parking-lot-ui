@@ -1,5 +1,16 @@
 export default {
   path: '/pb',
-  component: () => import('../layouts/ParkingBoy.vue'),
-  children: [],
+  component: () => import('../views/parkingBoy/Login.vue'),
+  children: [
+    {
+      path: '/pb/login',
+      name: 'paLogin',
+      component: () => import('../views/parkingBoy/Login.vue'),
+    },
+    {
+      path: '/pb/dashboard',
+      name: 'paDashboard',
+      component: () => import('../views/parkingBoy/parkingBoyDashboard'),
+    },
+  ],
 };
