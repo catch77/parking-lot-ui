@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { updateParkingBoyParkingLot } from '../../services/pb';
+import { updateParkingBoyParkingLot } from '../../../services/pb';
 
 export default {
   name: 'ParkingBoyParkingLogManagement',
