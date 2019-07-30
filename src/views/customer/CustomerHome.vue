@@ -59,11 +59,14 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "./style";
+
   .user-dashboard-header {
     padding-top: 10px;
 
     .welcome-title {
-      font-size: 28px;
+      font-size: 24px;
+      color: #6e798b;
     }
 
     .user-name {
@@ -80,9 +83,5 @@
   .customer-card-list {
     margin-top: 30px;
     margin-bottom: 40px;
-
-    .feature-item-card + .feature-item-card {
-      margin-top: 20px;
-    }
   }
 </style>

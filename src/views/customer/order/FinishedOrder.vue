@@ -36,6 +36,9 @@ export default {
   text-align: center;
   font-size: 50vw;
   padding-top: 60px;
+  @media screen and (min-width: 400px) {
+    font-size: 200px;
+  }
 }
 .result-info {
   text-align: center;

@@ -46,18 +46,6 @@
 </script>
 
 <style scoped lang="scss">
-  .feature-item-card {
-    background: #FFF;
-    padding: 12px 18px 24px;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
-    transition: all .1s ease-in-out;
-
-    &:hover, &:focus {
-      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
-
-    }
-  }
 
   .icon {
     font-size: 42px;
@@ -86,3 +74,4 @@
     align-items: flex-end;
   }
 </style>
+
