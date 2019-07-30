@@ -1,10 +1,10 @@
 <template>
-  <div style="margin:0px auto;font-size:2em">
-    <el-form ref="form" :model="car" label-width="0" style="width:100%">
+  <div>
+    <el-form ref="form" :model="car" label-width="0" style="width:100%" @submit.native.prevent>
       <label id="tipLabel" style="margin-left:25%;color:red;font-size:1em"></label>
       <h3 class="confirm-title">请输入车牌号以继续</h3>
       <el-form-item>
-        <el-input v-model="car.carNo" />
+        <el-input v-model="car.carNo"/>
       </el-form-item>
 
       <div class="confirm-btn-bar">
@@ -30,7 +30,8 @@ export default {
     addVisible: Boolean,
   },
   methods: {
-    handleCommit() {
+    handleCommit(e) {
+      e.preventDefault()
       var tipMessage = document.getElementById('tipLabel');
       if (this.car.carNo === '') {
         tipMessage.innerText = '车牌号不能为空';
