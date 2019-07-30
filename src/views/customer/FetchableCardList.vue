@@ -6,7 +6,7 @@
     <div class="order-lit">
       <OrderItemCard @click="handleSubmitFetch"/>
     </div>
-    <el-dialog :visible="showConfirmDialog" class="confirm-dialog" width="90%">
+    <el-dialog :visible="showConfirmDialog" class="confirm-dialog" width="90%" v-loading="loading">
       <div>
         <div class="confirm-content">
           <h2 class="title">请确定是否取车</h2>
@@ -44,7 +44,8 @@
           submitTime: new Date(),
           fetchTime: new Date(),
           orderStatus: 'PARK',
-        }
+        },
+        loading: false,
       };
     },
     methods: {
@@ -73,6 +74,7 @@
 
   .confirm-content {
     margin-top: -40px;
+
     .car-no {
       font-size: 42px;
       text-align: center;

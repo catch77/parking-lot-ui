@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="result-page">
     <div class="icon-wrapper">
       <i class="el-icon-success icon"></i>
     </div>
@@ -10,42 +10,30 @@
   </div>
 </template>
 <script>
-export default {
-  data: function() {
-    return {
-      car: {
-        carNo: '',
-      },
-      canclevisible: false,
-    };
-  },
-  props: {
-    addVisible: Boolean,
-  },
-  methods: {
-    handleBack() {
-      this.$router.push('/customers/dashboard');
+  export default {
+    data: function() {
+      return {
+        car: {
+          carNo: '',
+        },
+        canclevisible: false,
+      };
     },
-  },
-};
+    props: {
+      addVisible: Boolean,
+    },
+    methods: {
+      handleBack() {
+        this.$router.push('/customers/dashboard');
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
-.icon-wrapper {
-  color: #5daf34;
-  text-align: center;
-  font-size: 50vw;
-  padding-top: 60px;
-  @media screen and (min-width: 400px) {
-    font-size: 200px;
+  @import "style";
+
+  .confirm-btn {
+    width: 100%;
   }
-}
-.result-info {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-.confirm-btn {
-  width: 100%;
-}
 </style>

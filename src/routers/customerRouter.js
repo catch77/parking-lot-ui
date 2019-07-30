@@ -22,6 +22,10 @@ export default {
       path: '/customers/fetchable-order-list',
       name: 'FetchableOrderList',
       component: () => import('../views/customer/FetchableCardList'),
+    }, {
+      path: '/customers/fetch-result/:orderId',
+      name: 'FetchResultPage',
+      component: () => import('../views/customer/OrderFetchResult'),
     },
   ],
 };
