@@ -28,7 +28,10 @@ export default {
   methods: {
     handleCommand(command) {
       if (command === 'LOG_OUT') {
-        this.$store.dispatch('logout');
+        this.$store.dispatch('logout')
+          .then(() => {
+          this.$router.push("/admin/login")
+        });
       }
     },
   },

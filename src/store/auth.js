@@ -53,6 +53,7 @@ const auth = {
       return new Promise(resolve => {
         commit('CLEAR_TOKEN');
         dispatch('admin/clearUser');
+        dispatch('customer/clearCustomer');
         resolve();
       });
     },

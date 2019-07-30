@@ -37,7 +37,7 @@ const admin = {
       return new Promise(resolve => {
         commit('CLEAR_USER');
         resolve();
-        Router.push(`/admin/login`);
+        // Router.push(`/admin/login`);
       });
     },
   },
