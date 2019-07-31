@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1 class="customer-page-title">
-      新建停车订单
+      <fa-icon icon="chevron-left" @click="$router.push(`/customers/dashboard`)"/>
+      停车
     </h1>
     <div class="customer-item-card">
       <el-form ref="form" :model="car" label-width="0" @submit.native.prevent :rules="rules">
@@ -11,8 +12,7 @@
         </el-form-item>
 
         <div class="confirm-btn-bar">
-          <el-button type="primary" @click="handleCommit" class="confirm-btn"
-          >确定
+          <el-button type="primary" @click="handleCommit" class="confirm-btn" :loading="loading">确定
             <fa-icon icon="arrow-right"/>
           </el-button>
         </div>
@@ -48,6 +48,7 @@
           carNo: [{ required: true, message: '请输入车牌号', trigger: 'blur' },
             { validator: checkCarNo, trigger: 'blur' }],
         },
+        loading: false,
       };
     },
     props: {
@@ -57,14 +58,18 @@
       handleCommit() {
         this.$refs.form.validate(valid => {
           if (valid) {
+            this.loading = true;
             this.$store
               .dispatch('order/postCarNo', this.car.carNo)
               .then(() => {
-                this.$message.success('添加成功');
+                this.$message.success('停车订单提交成功');
                 this.$router.push('/customers/finishedorder');
               })
               .catch(() => {
                 this.$message.error('添加失败');
+              })
+              .finally(() => {
+                this.loading = false;
               });
           }
         });
