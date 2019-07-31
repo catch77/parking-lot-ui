@@ -26,6 +26,10 @@ export default {
       path: '/customers/fetch-result/:orderId',
       name: 'FetchResultPage',
       component: () => import('../views/customer/OrderFetchResult'),
+    }, {
+      path: '/customers/orders',
+      name: 'CustomerOrders',
+      component: () => import('../views/customer/CustomerOrderList'),
     },
   ],
 };

@@ -11,7 +11,7 @@
 
   }
 
-  +.feature-item-card, +.customer-item-card{
+  + .feature-item-card, + .customer-item-card {
     margin-top: 20px;
   }
 }
@@ -31,5 +31,29 @@
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+  }
+}
+
+.order-item-card {
+  .card-no {
+    margin-top: 8px;
+    margin-bottom: 12px;
+    font-size: 32px;
+    line-height: 40px;
+
+    .card-no-icon {
+      color: #0052CC;
+      margin-right: 15px;
+      font-size: 36px;
+    }
+  }
+
+  .card-content {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .item-title {
+    color: #6e798b;
   }
 }
