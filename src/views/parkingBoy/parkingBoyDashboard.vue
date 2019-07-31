@@ -1,32 +1,48 @@
 <template>
-    <div>
-        <div class="user-dashboard-header" >
-            <h1 class="user-name">
-            <span class="welcome-title">欢迎您,停车员：<br /></span>
-            {{ name }}
-            </h1>
-        </div>
-        <br/>
-        <br/>
-        <div class="card">
-            <el-card class="box-card" :body-style="{ padding: '60px' }">
-              <div  class="clearfix">
-             <span >查看我的订单</span>
-              <el-button style="float: right; padding: 3px 0" type="text" @click="handleLookMyOrder">进入</el-button>
-              </div>
-            </el-card>
-        </div>
-        <br/>
-        <br/>
-        <div class="card">
-            <el-card class="box-card" :body-style="{ padding: '60px' }">
-            <div  class="clearfix">
-            <span>查看所有订单</span>
-            <el-button style="float: right; padding: 3px 0" type="text" @click="handleLookAllOrder">进入</el-button>
-            </div>
-            </el-card>
-        </div>
+  <div>
+    <div class="user-dashboard-header">
+      <h1 class="user-name">
+        <span class="welcome-title">
+          欢迎您,停车员：
+          <br />
+        </span>
+        {{ name }}
+      </h1>
     </div>
+    <br />
+    <br />
+    <div class="card" v-if="false">
+      <el-card
+        class="box-card"
+        :body-style="{ padding: '60px' }"
+        style="border-radius:15px"
+        @click.native="handleLookMyOrder"
+      >
+        <div class="clearfix">
+          <span>查看指派中的订单</span>
+        </div>
+      </el-card>
+    </div>
+    <br />
+    <br />
+    <div class="card" style="text-align:right">
+      <el-card
+        class="box-card"
+        :body-style="{ padding: '60px' }"
+        style="border-radius:15px"
+        @click.native="handleLookAllOrder"
+      >
+        <div class="clearfix" style="text-align:center">
+          <span>查看所有订单</span>
+        </div>
+      </el-card>
+
+      <el-switch style="margin-top: 20px" :value="parkingboyStatus" @change="handleParkingBoyMethodChange" inactive-text="开启抢单状态">
+        <!-- change="changeParkingboyStatus" -->
+      </el-switch>
+
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -40,10 +56,15 @@ export default {
   },
   methods: {
     handleLookMyOrder() {
-      this.$router.push("/pb/myorder");
+      this.$router.push('/pb/myorder');
     },
     handleLookAllOrder() {
+      this.$store.dispatch('parkingboy/setParkingBoyOrders');
       this.$router.push('/pb/allorder');
+    },
+    handleParkingBoyMethodChange() {
+      let id = this.$store.getters['parkingboy/getParkingboyId'];
+      this.$store.dispatch('parkingboy/changeParkingboyStatus', id);
     },
   },
   computed: {
@@ -51,6 +72,14 @@ export default {
       return this.$store.getters['parkingboy/getParkingboy'] && this.$store.getters['parkingboy/getParkingboy'].user
         ? this.$store.getters['parkingboy/getParkingboy'].user.name
         : '';
+    },
+    parkingboyStatus() {
+      if (
+        this.$store.getters['parkingboy/getParkingboy'].status === 'OPEN'
+      ) {
+        return true;
+      }
+      return false;
     },
   },
 };
@@ -70,8 +99,8 @@ export default {
     font-size: 36px;
   }
 }
-.card{
-    .text {
+.card {
+  .text {
     font-size: 18px;
   }
 
@@ -82,14 +111,15 @@ export default {
   .clearfix:before,
   .clearfix:after {
     display: table;
-    content: "";
+    content: '';
   }
   .clearfix:after {
-    clear: both
+    clear: both;
   }
 
   .box-card {
-    width: 480px;
+    width: 100%;
+    font-size: 2em;
   }
 }
 </style>

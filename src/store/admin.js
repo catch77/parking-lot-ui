@@ -2,7 +2,6 @@
  * Created by morenyang on 2019-07-28.
  */
 import * as userService from '../services/userService';
-import Router from '../router';
 
 const admin = {
   namespaced: true,
