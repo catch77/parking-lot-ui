@@ -52,6 +52,11 @@ export default {
           index: '/admin/console/manageOrders',
           title: '管理订单',
         },
+        {
+          icon: 'el-icon-lx-cascades',
+          index: '/admin/console/hr/managePB',
+          title: '管理ParkingBoy(HR)',
+        }
       ],
     };
   },
