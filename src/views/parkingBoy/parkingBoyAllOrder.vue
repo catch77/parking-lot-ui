@@ -66,34 +66,6 @@
 export default {
     data: function(){
         return {
-        //     orderList: [
-        //         {
-        //             name: 'vip客户1',//顾客姓名
-        //             customerPhone: '15521081400',//客户电话
-        //             carNo: 'aaaa1',//车牌号
-        //             price: 12.0,//总价
-        //             submitTime: '2019-07-29 15:21:00',//订单提交时间
-        //             parkingLotName: '六号停车场', //停车场
-        //             orderNumber: '00001',//订单编号
-        //             orderStatus: 'PARK',//订单状态
-        //             fetchTime: '2019-07-29 22:21:00',//取车时间
-        //             fetchParkingBoy: '小明',//取车人name
-        //             parkParkingBoy: '小明',//停车员name
-        //     },
-        //     {
-        //             name: '客户2',//顾客姓名
-        //             customerPhone: '13369581564',
-        //             carNo: '23654',//车牌号
-        //             price: 6.0,//总价
-        //             submitTime: '2019-07-29 18:56:00',//订单提交时间
-        //             parkingLotName: '六号停车场', //停车场
-        //             orderNumber: '00002',//订单编号
-        //             orderStatus: 'FETCH',//订单状态
-        //             fetchTime: '2019-07-29 23:36:00',//取车时间
-        //             fetchParkingBoy: '小明',//取车人
-        //             parkParkingBoy: '小明',//停车人
-        //     },
-        //     ],
         }
     },
     methods: {

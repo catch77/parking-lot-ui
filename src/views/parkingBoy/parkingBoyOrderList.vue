@@ -68,21 +68,6 @@
 export default {
     data: function() {
         return {
-            //order: null,
-            // order:  {
-            //         id:'1',
-            //         name: 'vip客户1',//顾客姓名
-            //         customerPhone: '15521081400',//客户电话
-            //         carNo: 'aaaa1',//车牌号
-            //         price: 12.0,//总价
-            //         submitTime: '2019-07-29 15:21:00',//订单提交时间
-            //         parkingLotName: '六号停车场', //停车场
-            //         orderNumber: '00001',//订单编号
-            //         orderStatus: 'PARK',//订单状态
-            //         fetchTime: '2019-07-29 22:21:00',//取车时间
-            //         fetchParkingBoy: '小明',//取车人name
-            //         parkParkingBoy: '小明',//停车员name
-            // },
         }
     },
     methods: {

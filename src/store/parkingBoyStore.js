@@ -57,9 +57,9 @@ const parkingboy = {
     },
     changeParkingboyStatus({ commit }, id){
         userService.fetchParkingboyByParkingboyId(id)
-        .then(
-            
-        )
+        .then(user => {
+                commit('SET_USER', user);
+        })
         .catch(err => {
             throw err;
           });
