@@ -8,24 +8,31 @@
         </div>
         <br/>
         <br/>
-        <div class="card">
-            <el-card class="box-card" :body-style="{ padding: '60px' }">
+        <div class="card" v-if="false">
+            <el-card class="box-card" :body-style="{ padding: '60px' }" style="border-radius:15px" @click.native="handleLookMyOrder">
               <div  class="clearfix">
-             <span >查看我的订单</span>
-              <el-button style="float: right; padding: 3px 0" type="text" @click="handleLookMyOrder">进入</el-button>
+             <span >查看指派中的订单</span>
               </div>
             </el-card>
         </div>
         <br/>
         <br/>
-        <div class="card">
-            <el-card class="box-card" :body-style="{ padding: '60px' }">
-            <div  class="clearfix">
-            <span>查看所有订单</span>
-            <el-button style="float: right; padding: 3px 0" type="text" @click="handleLookAllOrder">进入</el-button>
+        <div class="card" style="text-align:right">
+            <el-card class="box-card" :body-style="{ padding: '60px' }" style="border-radius:15px" @click.native="handleLookAllOrder">
+            <div  class="clearfix" style="text-align:center">
+            <span >查看所有订单</span>
             </div>
             </el-card>
+            
+            <el-switch
+                style="margin-top: 20px"
+                v-model="value1"
+                inactive-text="改变抢单状态">
+                <!-- change="changeParkingboyStatus" -->
+            </el-switch>
+            <p v-show="false">{{changeParkingboyStatus}}</p>
         </div>
+    
     </div>
 </template>
 <script>
@@ -33,6 +40,8 @@ export default {
   data: function() {
     return {
       canclevisible: false,
+      value1: false,
+    //   value1: this.$store.getters['parkingboy/getParkingboyId'],
     };
   },
   props: {
@@ -43,7 +52,8 @@ export default {
       this.$router.push("/pb/myorder");
     },
     handleLookAllOrder() {
-      this.$router.push('/pb/allorder');
+        this.$store.dispatch('parkingboy/setParkingBoyOrders');
+        this.$router.push('/pb/allorder');
     },
   },
   computed: {
@@ -52,6 +62,14 @@ export default {
         ? this.$store.getters['parkingboy/getParkingboy'].user.name
         : '';
     },
+    changeParkingboyStatus () {
+        if (this.value1){
+            let id = this.$store.getters['parkingboy/getParkingboyId']
+            this.$store.dispatch('changeParkingboyStatus', id);
+            return true;
+        }
+        return false;
+    }
   },
 };
 </script>
@@ -89,7 +107,8 @@ export default {
   }
 
   .box-card {
-    width: 480px;
+    width: 100%;
+    font-size:2em
   }
 }
 </style>

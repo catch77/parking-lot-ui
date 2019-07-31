@@ -4,17 +4,22 @@ const parkingboy = {
   namespaced: true,
   state: {
     parkingboy: {},
+    parkOrders: [],
+    currentParkOrder: {},
   },
   mutations: {
     SET_USER(state, user) {
       state.parkingboy = user;
     },
     CLEAR_USER(state) {
-      state.parkingboy = null;
+      state.parkOrders = null;
     },
-    // SAVE_USER(state, payload){
-
-    // }
+    SET_PARKORDERS(state, orders) {
+        state.parkOrders = orders;
+    },
+    SET_CURRENTORDER(state, order) {
+        state.currentParkOrder = order;
+    },
   },
   actions: {
     getParkingboy({ commit, rootGetters }) {
@@ -38,6 +43,27 @@ const parkingboy = {
         resolve();
       });
     },
+    setParkingBoyOrders({ commit }) {
+        userService.fetchParkingboyOrders()
+        .then(res =>{
+            commit('SET_PARKORDERS', res);
+        })
+        .catch(err => {
+            throw err;
+          });
+    },
+    setCurrentParkOrder({ commit }, order){
+        commit('SET_CURRENTORDER', order)
+    },
+    changeParkingboyStatus({ commit }, id){
+        userService.fetchParkingboyByParkingboyId(id)
+        .then(
+            
+        )
+        .catch(err => {
+            throw err;
+          });
+    },
   },
   getters: {
     getParkingboy(state) {
@@ -48,6 +74,18 @@ const parkingboy = {
         return state.parkingboy.name;
       }
       return null;
+    },
+    getParkingboyId(state) {
+        if (state.parkingboy) {
+          return state.parkingboy.id;
+        }
+        return null;
+    },
+    getParkOrders(state) {
+        return state.parkOrders;
+    },
+    getCurrentParkOrder(state) {
+        return state.currentParkOrder;
     },
   },
 };

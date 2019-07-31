@@ -17,5 +17,10 @@ export default {
       name: 'pbAllOder',
       component: () => import('../views/parkingBoy/parkingBoyAllOrder'),
     },
+    {
+      path: '/pb/orderlsit',
+      name: 'Orderlist',
+      component: () => import('../views/parkingBoy/parkingBoyOrderList'),
+    },
   ],
 };
