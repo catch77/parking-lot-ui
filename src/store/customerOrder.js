@@ -39,7 +39,7 @@ const customerOrder = {
         });
     },
     fetchFetchingOrder({ commit }, orderId) {
-      return customerService.fetchById(orderId)
+      return customerService.fetchOrdersById(orderId)
         .then(res => {
           commit('SET_FETCHING_ORDER', res);
           return res;
@@ -50,6 +50,13 @@ const customerOrder = {
         commit('CLEAR_FETCHING_ORDER');
         resolve();
       });
+    },
+    fetchAllOrders({ commit, getters }) {
+      return customerService.fetchOrderListByCustomerId(getters['customer/getCustomer'].id)
+        .then(orderList => {
+          commit('SET_ORDER_LIST', orderList);
+          return orderList;
+        });
     },
   },
   getters: {

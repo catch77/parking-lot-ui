@@ -50,10 +50,17 @@
 
 <script>
   import { library } from '@fortawesome/fontawesome-svg-core';
-  import { faParking, faSpinner, faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
+  import {
+    faParking,
+    faSpinner,
+    faUserPlus,
+    faUserMinus,
+    faCheck,
+    faUserCheck,
+  } from '@fortawesome/free-solid-svg-icons';
   import moment from 'moment';
 
-  library.add(faParking, faSpinner, faUserPlus, faUserMinus);
+  library.add(faParking, faSpinner, faUserPlus, faUserMinus, faCheck, faUserCheck);
   export default {
     name: 'OrderCard',
     props: {
@@ -170,7 +177,7 @@
             };
           case 'PAID':
             return {
-              icon: 'accept',
+              icon: 'check',
               text: '已取车',
             };
           default:
