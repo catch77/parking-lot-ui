@@ -28,6 +28,14 @@ export default {
           path: '/admin/console/checkUser',
           component: () => import('../views/admin/UserList.vue'),
         },
+        {
+          path: '/admin/console/manageHr',
+          component: () => import('../views/admin/ManageHr/ManageHr.vue'),
+        },
+        {
+          path: '/admin/console/manageOrders',
+          component: () => import('../views/admin/ManageOrders/ManageOrders.vue'),
+        }
       ],
     },
     {
