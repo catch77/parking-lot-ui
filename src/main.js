@@ -5,12 +5,14 @@ import store from './store';
 import element from 'element-ui';
 import './assets/css/element-ui.css';
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 Vue.component('fa-icon', FontAwesomeIcon);
+library.add(faChevronLeft);
 
 Vue.config.productionTip = false;
-
 Vue.use(element);
 
 new Vue({

@@ -21,6 +21,10 @@ export const customerFetchCar = (orderId) => {
   return request.post(`/orders/fetch/${orderId}`);
 };
 
-export const fetchById = (orderId) => {
+export const fetchOrdersById = (orderId) => {
   return request.get(`/orders/${orderId}`);
+};
+
+export const fetchOrderListByCustomerId = (customerId) => {
+  return request.get(`/user-orders/${customerId}/all`);
 };
