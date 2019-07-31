@@ -13,5 +13,5 @@ export const fetchParkingboyOrders = () => {
   };
 
 export const fetchParkingboyByParkingboyId = (id) => {
-    return request.post(`/parking-boys/${id}/parking-status`);
+    return request.put(`/parking-boys/${id}/parking-status`);
   };

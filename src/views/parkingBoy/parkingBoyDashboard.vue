@@ -1,47 +1,56 @@
 <template>
-    <div>
-        <div class="user-dashboard-header" >
-            <h1 class="user-name">
-            <span class="welcome-title">欢迎您,停车员：<br /></span>
-            {{ name }}
-            </h1>
-        </div>
-        <br/>
-        <br/>
-        <div class="card" v-if="false">
-            <el-card class="box-card" :body-style="{ padding: '60px' }" style="border-radius:15px" @click.native="handleLookMyOrder">
-              <div  class="clearfix">
-             <span >查看指派中的订单</span>
-              </div>
-            </el-card>
-        </div>
-        <br/>
-        <br/>
-        <div class="card" style="text-align:right">
-            <el-card class="box-card" :body-style="{ padding: '60px' }" style="border-radius:15px" @click.native="handleLookAllOrder">
-            <div  class="clearfix" style="text-align:center">
-            <span >查看所有订单</span>
-            </div>
-            </el-card>
-            
-            <el-switch
-                style="margin-top: 20px"
-                v-model="value1"
-                inactive-text="改变抢单状态">
-                <!-- change="changeParkingboyStatus" -->
-            </el-switch>
-            <p v-show="false">{{changeParkingboyStatus}}</p>
-        </div>
-    
+  <div>
+    <div class="user-dashboard-header">
+      <h1 class="user-name">
+        <span class="welcome-title">
+          欢迎您,停车员：
+          <br />
+        </span>
+        {{ name }}
+      </h1>
     </div>
+    <br />
+    <br />
+    <div class="card" v-if="false">
+      <el-card
+        class="box-card"
+        :body-style="{ padding: '60px' }"
+        style="border-radius:15px"
+        @click.native="handleLookMyOrder"
+      >
+        <div class="clearfix">
+          <span>查看指派中的订单</span>
+        </div>
+      </el-card>
+    </div>
+    <br />
+    <br />
+    <div class="card" style="text-align:right">
+      <el-card
+        class="box-card"
+        :body-style="{ padding: '60px' }"
+        style="border-radius:15px"
+        @click.native="handleLookAllOrder"
+      >
+        <div class="clearfix" style="text-align:center">
+          <span>查看所有订单</span>
+        </div>
+      </el-card>
+
+      <el-switch style="margin-top: 20px" :value="parkingboyStatus" @change="handleParkingBoyMethodChange" inactive-text="改变抢单状态">
+        <!-- change="changeParkingboyStatus" -->
+      </el-switch>
+
+    </div>
+  </div>
 </template>
 <script>
 export default {
   data: function() {
     return {
       canclevisible: false,
-      value1: false,
-    //   value1: this.$store.getters['parkingboy/getParkingboyId'],
+      value1: this.parkingboyStatus,
+      //   value1: this.$store.getters['parkingboy/getParkingboyId'],
     };
   },
   props: {
@@ -49,11 +58,15 @@ export default {
   },
   methods: {
     handleLookMyOrder() {
-      this.$router.push("/pb/myorder");
+      this.$router.push('/pb/myorder');
     },
     handleLookAllOrder() {
-        this.$store.dispatch('parkingboy/setParkingBoyOrders');
-        this.$router.push('/pb/allorder');
+      this.$store.dispatch('parkingboy/setParkingBoyOrders');
+      this.$router.push('/pb/allorder');
+    },
+    handleParkingBoyMethodChange() {
+      let id = this.$store.getters['parkingboy/getParkingboyId'];
+      this.$store.dispatch('parkingboy/changeParkingboyStatus', id);
     },
   },
   computed: {
@@ -62,14 +75,14 @@ export default {
         ? this.$store.getters['parkingboy/getParkingboy'].user.name
         : '';
     },
-    changeParkingboyStatus () {
-        if (this.value1){
-            let id = this.$store.getters['parkingboy/getParkingboyId']
-            this.$store.dispatch('changeParkingboyStatus', id);
-            return true;
-        }
-        return false;
-    }
+    parkingboyStatus() {
+      if (
+        this.$store.getters['parkingboy/getParkingboy'].status === 'OPEN'
+      ) {
+        return true;
+      }
+      return false;
+    },
   },
 };
 </script>
@@ -88,8 +101,8 @@ export default {
     font-size: 36px;
   }
 }
-.card{
-    .text {
+.card {
+  .text {
     font-size: 18px;
   }
 
@@ -100,15 +113,15 @@ export default {
   .clearfix:before,
   .clearfix:after {
     display: table;
-    content: "";
+    content: '';
   }
   .clearfix:after {
-    clear: both
+    clear: both;
   }
 
   .box-card {
     width: 100%;
-    font-size:2em
+    font-size: 2em;
   }
 }
 </style>
