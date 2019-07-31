@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="customer-page-title">
+      <fa-icon icon="chevron-left" @click="$router.push(`/customers/dashboard`)"/>
       选择需要取车的订单
     </h1>
     <el-row v-loading="loading" v-if="loading"/>
@@ -51,12 +52,12 @@
       };
     },
     mounted() {
-        this.loading = true;
-        this.$store.dispatch('clearCustomerOrderList').then(() =>
-          this.$store.dispatch('getFetchableOrderList')
-        ).then(() => {
-          this.loading = false;
-        });
+      this.loading = true;
+      this.$store.dispatch('clearCustomerOrderList').then(() =>
+        this.$store.dispatch('getFetchableOrderList'),
+      ).then(() => {
+        this.loading = false;
+      });
     },
     methods: {
       handleSubmitFetch(order) {

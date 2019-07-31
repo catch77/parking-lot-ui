@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1 class="customer-page-title">
-      新建停车订单
+      <fa-icon icon="chevron-left" @click="$router.push(`/customers/dashboard`)"/>
+      停车
     </h1>
     <div class="customer-item-card">
       <el-form ref="form" :model="car" label-width="0" @submit.native.prevent :rules="rules">
