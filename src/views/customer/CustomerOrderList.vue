@@ -3,6 +3,7 @@
     <h1 class="customer-page-title">
       我的订单
     </h1>
+    <el-row v-loading="loading" v-if="loading"/>
     <div class="order-list">
       <OrderCard v-for="order in orders" :key="order.id" :order="order"/>
     </div>
@@ -17,7 +18,7 @@
     components: { OrderCard },
     data() {
       return {
-        order: {},
+        loading: false,
       };
     },
     mounted() {
@@ -25,10 +26,12 @@
     },
     methods: {
       fetchUserOrderList() {
-        this.$store.dispatch('fetchAllOrders')
-          .then(res => {
-            console.log(res);
-          });
+        this.loading = true;
+        this.$store.dispatch('clearCustomerOrderList').then(() =>
+          this.$store.dispatch('fetchAllOrders'),
+        ).then(() => {
+          this.loading = false;
+        });
       },
     },
     computed: {

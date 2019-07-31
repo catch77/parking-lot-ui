@@ -3,6 +3,7 @@
     <h1 class="customer-page-title">
       选择需要取车的订单
     </h1>
+    <el-row v-loading="loading" v-if="loading"/>
     <div class="order-lit">
       <OrderItemCard v-for="order in $store.getters.customerOrderList" :key="order.id" :order="order"
                      @click="() => handleSubmitFetch(order)"/>
@@ -50,7 +51,12 @@
       };
     },
     mounted() {
-      this.$store.dispatch('getFetchableOrderList');
+        this.loading = true;
+        this.$store.dispatch('clearCustomerOrderList').then(() =>
+          this.$store.dispatch('getFetchableOrderList')
+        ).then(() => {
+          this.loading = false;
+        });
     },
     methods: {
       handleSubmitFetch(order) {
@@ -61,7 +67,7 @@
         this.$store.dispatch('customerFetchCar', this.currentConfirmOrder.id)
           .then(res => {
             this.cancelFetch();
-            this.$router.push(`/customers/fetch-result/${res.id}`)
+            this.$router.push(`/customers/fetch-result/${res.id}`);
           }).catch(() => {
           this.$message.error('取车失败，请检查停车状态后重试');
         });

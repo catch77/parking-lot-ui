@@ -10,6 +10,9 @@ const customerOrder = {
     SET_ORDER_LIST(state, orderList) {
       state.customerOrderList = orderList;
     },
+    CLEAR_ORDER_LIST(state) {
+      state.customerOrderList = [];
+    },
     SET_FETCHING_ORDER(state, order) {
       state.fetchingOrder = order;
     },
@@ -57,6 +60,13 @@ const customerOrder = {
           commit('SET_ORDER_LIST', orderList);
           return orderList;
         });
+    },
+    clearCustomerOrderList({ commit }) {
+      return new Promise(resolve => {
+
+        commit('CLEAR_ORDER_LIST');
+        resolve();
+      });
     },
   },
   getters: {
