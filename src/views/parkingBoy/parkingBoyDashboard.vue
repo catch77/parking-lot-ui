@@ -37,7 +37,7 @@
         </div>
       </el-card>
 
-      <el-switch style="margin-top: 20px" :value="parkingboyStatus" @change="handleParkingBoyMethodChange" inactive-text="改变抢单状态">
+      <el-switch style="margin-top: 20px" :value="parkingboyStatus" @change="handleParkingBoyMethodChange" inactive-text="开启抢单状态">
         <!-- change="changeParkingboyStatus" -->
       </el-switch>
 
@@ -49,8 +49,6 @@ export default {
   data: function() {
     return {
       canclevisible: false,
-      value1: this.parkingboyStatus,
-      //   value1: this.$store.getters['parkingboy/getParkingboyId'],
     };
   },
   props: {

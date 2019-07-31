@@ -33,11 +33,11 @@
                 </el-row>
                 <el-row :guttur="5">
                     <el-col :span="5"><span>提交时间</span></el-col>
-                    <el-col :span="10"><span>{{order.submitTime}}</span></el-col>
+                    <el-col :span="10"><span>{{order.submitTime.substr(0, 19)}}</span></el-col>
                 </el-row>
                 <el-row :guttur="5" v-if="false">
                     <el-col :span="5"><span>取车时间</span></el-col>
-                    <el-col :span="10"><span >{{order.fetchTime}}</span></el-col>
+                    <el-col :span="10"><span >{{order.fetchTime.substr(0, 19)}}</span></el-col>
                 </el-row>
                 <el-row :guttur="5" v-if="!order.orderStatus==='PARK'">
                     <el-col :span="5"><span>停车员</span></el-col>
