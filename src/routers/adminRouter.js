@@ -38,7 +38,7 @@ export default {
         },
         {
           path: '/admin/console/hr/managePB',
-          component: () => import('../views/admin/hrManagePB/ManagePB.vue')
+          component: () => import('../views/admin/HRManagePB/ManagePB.vue')
         }
       ],
     },

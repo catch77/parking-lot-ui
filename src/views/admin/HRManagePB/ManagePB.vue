@@ -16,7 +16,6 @@
         <el-table-column prop="salary" label="薪资"></el-table-column>
         <el-table-column prop="orderNumInClose" label="被动接单数"></el-table-column>
         <el-table-column prop="orderNumInOpen" label="主动接单数"></el-table-column>
-        <el-table-column prop="status" label="当前接单状态"></el-table-column>
         <el-table-column label="操作" width="250px" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button>
