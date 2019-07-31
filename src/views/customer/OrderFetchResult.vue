@@ -98,7 +98,7 @@
   }
 
   .fetch-footer {
-    margin: 20px 0 40px;
+    margin: 20px 0 0;
 
     .footer-submit-btn {
       width: 100%;

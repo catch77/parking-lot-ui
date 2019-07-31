@@ -66,6 +66,7 @@
     justify-content: center;
     padding-bottom: 20px;
     color: #8c939d;
+    margin-top: 40px;
   }
 
 
