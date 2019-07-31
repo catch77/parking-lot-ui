@@ -72,6 +72,13 @@ export default {
         return {
         }
     },
+    created: function() {
+        if (this.order.fetchTime===null){
+            return this.order.fetchTime 
+        }else {
+            return this.order.fetchTime = this.order.fetchTime.substr(0, 19)
+        }
+    },
     methods: {
         back() {
             this.$router.push('/pb/allorder');
@@ -81,7 +88,7 @@ export default {
         order () { 
             return this.$store.getters['parkingboy/getCurrentParkOrder'];
         }
-    }
+    },
 }
 </script>
 
