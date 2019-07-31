@@ -18,7 +18,7 @@
                 <br>
                 <el-row :guttur="5">
                     <el-col :span="6"><span>顾客姓名</span></el-col>
-                    <el-col :span="10"><span>{{order.name}}</span></el-col>
+                    <el-col :span="10"><span>{{order.username}}</span></el-col>
                 </el-row>
                 <el-row :guttur="5">
                     <el-col :span="6"><span>顾客电话</span></el-col>
@@ -34,7 +34,7 @@
                 </el-row>
                 <el-row :guttur="5">
                     <el-col :span="6"><span>订单提交时间</span></el-col>
-                    <el-col :span="10"><span>{{order.submitTime}}</span></el-col>
+                    <el-col :span="10"><span>{{order.submitTime.substr(0, 19)}}</span></el-col>
                 </el-row>
                 <el-row :guttur="5" >
                     <el-col :span="6"><span>取车时间</span></el-col>
@@ -42,7 +42,9 @@
                 </el-row>
                 <el-row :guttur="5" >
                     <el-col :span="6"><span>停车员</span></el-col>
-                    <el-col :span="10"><span>{{order.parkParkingBoyName}}</span></el-col>
+                    <el-col :span="10">
+                        <span >{{order.parkParkingBoyName}}</span>
+                    </el-col>
                 </el-row>
                 <el-row :guttur="5" >
                     <el-col :span="6"><span>取车人</span></el-col>
@@ -70,6 +72,13 @@ export default {
         return {
         }
     },
+    created: function() {
+        if (this.order.fetchTime===null){
+            return this.order.fetchTime 
+        }else {
+            return this.order.fetchTime = this.order.fetchTime.substr(0, 19)
+        }
+    },
     methods: {
         back() {
             this.$router.push('/pb/allorder');
@@ -79,7 +88,7 @@ export default {
         order () { 
             return this.$store.getters['parkingboy/getCurrentParkOrder'];
         }
-    }
+    },
 }
 </script>
 
