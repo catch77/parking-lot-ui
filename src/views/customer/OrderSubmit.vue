@@ -31,7 +31,7 @@
   export default {
     data() {
       const checkCarNo = (rule, value, cb) => {
-        if (value.length !== 5) {
+        if (value.length !== 6) {
           cb(new Error('请输入五位数车牌号'));
         }
         if (!/^[a-zA-Z0-9]+$/.test(value)) {
