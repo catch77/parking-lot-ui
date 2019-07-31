@@ -36,7 +36,6 @@ const customer = {
       return new Promise(resolve => {
         commit('CLEAR_USER');
         resolve();
-        // Router.push(`/customer/signin`);
       });
     },
   },

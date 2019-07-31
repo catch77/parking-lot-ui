@@ -7,6 +7,7 @@ import admin from './store/admin';
 import userL from './store/userL';
 import customer from './store/customerStore';
 import order from './store/order';
+import parkingboy from './store/parkingBoyStore'
 import hrStore from './store/hr';
 import manageOrdersStore from './store/manageOrderStore';
 import customerOrder from './store/customerOrder';
@@ -22,6 +23,7 @@ export default new Vuex.Store({
     userL,
     customer,
     order,
+    parkingboy,
     hrStore,
     manageOrdersStore,
     customerOrder,
